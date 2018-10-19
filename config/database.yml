@@ -10,9 +10,9 @@ development:
   <<: *default
   database: design_db
 
-test:
-  <<: *default
-  database: design_test
+# test:
+#   <<: *default
+#   database: design_test
 
 production:
   <<: *default

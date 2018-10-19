@@ -203,3 +203,9 @@ link cai dat: https://viblo.asia/p/huong-dan-deploy-ung-dung-ruby-on-rails-len-s
 
   12. deploy
     $ cap production deploy
+
+
+** Loi thuong gap:
+  a. SSHKit::Runner::ExecuteError: Exception while executing as design@54.244.57.100: bundle exit status: 127
+    require 'capistrano/rvm'
+  b. puma not start in server

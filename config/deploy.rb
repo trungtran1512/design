@@ -1,8 +1,9 @@
 # config valid only for current version of Capistrano
-lock "3.10.0"
+lock "3.11.0"
 
 set :application, "design"
 set :repo_url, "git@github.com:trungpro152224/design.git"
+set :deploy_to, '/deploy/apps/design'
 set :pty, true
 set :linked_files, %w(config/database.yml config/application.yml)
 set :linked_dirs, %w(log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads)

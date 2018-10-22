@@ -209,3 +209,5 @@ link cai dat: https://viblo.asia/p/huong-dan-deploy-ung-dung-ruby-on-rails-len-s
   a. SSHKit::Runner::ExecuteError: Exception while executing as design@54.244.57.100: bundle exit status: 127
     require 'capistrano/rvm'
   b. puma not start in server
+    $ install_plugin Capistrano::Puma
+    $ install_plugin Capistrano::Puma::Nginx

@@ -1,3 +1,58 @@
 // Place all the styles related to the Say controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.logo-item {
+	display: inline-grid;
+	color: #FFFFFF;
+}
+.material-icons {
+	font-size: 2.5em;
+	text-align: center;
+}
+
+.navbar .navbar-brand {
+	font-size: 1.5em;
+	margin: auto;
+	font-family: Impact, Charcoal, sans-serif;
+	color: #FFFFFF !important;
+	background: none !important;
+	opacity: unset !important;
+}
+
+.navbar-expand-lg {
+	position: fixed;
+	width: 100%;
+	overflow: hidden;
+	letter-spacing: 1.5px;
+	transition: background .5s ease-in-out,padding .5s ease-in-out;
+	text-transform: uppercase;
+	border-bottom: none;
+}
+
+.navbar-light .navbar-nav .nav-link {
+	text-align: center;
+}
+
+#navbar li a {
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+#navbar a:hover {
+	background: #C6C1C1;
+	border-radius: 10px;
+	color: #00FFFF;
+	transition: 0.5s;
+	opacity: 0.7;
+}
+
+.navbar .expand {
+	text-transform: lowercase;
+}
+
+.logo-item:hover {
+	color: #FF0040;
+	opacity: 0.7;
+	transition: 1s;
+}

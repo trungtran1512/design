@@ -79,6 +79,10 @@
   }
 }
 
+.skill {
+  padding-top: 30px;
+}
+
 @media (max-width: 960px) {
   #navbar {
     background-color: #000000 !important;
@@ -121,11 +125,10 @@ p {
   clear: both;
 }
 
+.grid-item { width: 200px; }
+.grid-item--width2 { width: 400px; }
+
 /* ---- .grid-item ---- */
-.grid-sizer,
-.grid-item {
-  width: 33.333%;
-}
 
 .grid-item {
   float: left;
@@ -145,4 +148,18 @@ h3 {
   color: #FA5858;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+#footer-wrapper {
+  background: url("03.jpg");
+  background-size: cover !important;
+  height: 430px;
+}
+
+.text-light {
+  color: #FFFFFF;
 }

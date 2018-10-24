@@ -3,6 +3,7 @@
 <head>
 </head>
   <body>
+    <!-- header -->
     <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
       <div class="container">
         <div class="logo-item">
@@ -17,10 +18,13 @@
         <div class="main-container">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Blog<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#">About<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#">Skill</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blog</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
@@ -31,8 +35,6 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Sign up</a>
             </li>
-
-            
           </ul>
         </div>
       </div>
@@ -44,12 +46,17 @@
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
-        <div class="carousel-inner">
+        <div class="carousel-centered">
           <div class="carousel-item active">
             <%= image_tag("01.jpg", alt: "First slide", class: "d-block w-100") %>
-              <div class="carousel-caption d-none d-md-block">
-                <h1>Best Design</h1>
-                <span>by: Trung Tran</span>
+              <div class="carousel-caption mx-auto">
+                <h1 class="text-uppercase">
+                  <strong> where there is a will there is a way! </strong>
+                </h1>
+                <button type="button" class="btn btn-outline-danger" id="outline-danger">Find out more</button>
+                <br>
+                <hr>
+                <span>Design by: Trung Tran</span>
             </div>
           </div>
           <div class="carousel-item">
@@ -69,30 +76,84 @@
         </a>
       </div>
     </main>
-    <div class="bg-color-sky-light">
-      <div class="content-lg container">
-        <div class="row row-space-1 margin-b-2">
-          dfdsfdsf dsfdsf
+    <!-- about -->
+    <div class="about">
+      <div class="col-lg-8 mx-auto text-center">
+        <h1>About Me</h1>
+        <hr class ="my-4">
+        <p>Lorem Ipsum: simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <button type="button" class="btn btn-outline-info">Get started</button>
+      </div>
+    </div>
+
+    <!-- skill -->
+    <div class="skill">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h1 class="section-heading">All my skill</h1>
+            <hr class="my-4">
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <%= content_tag(:i, "https", class: "material-icons", id: "skill-https") %>
+              <h3 class="mb-3">Study</h3>
+              <p class="text-muted mb-0">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <%= content_tag(:i, "code", class: "material-icons", id: "skill-code") %>
+              <h3 class="mb-3">Code</h3>
+              <p class="text-muted mb-0"> 
+                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <%= content_tag(:i, "music_note", class: "material-icons", id: "skill-music") %>
+              <h3 class="mb-3">Music</h3>
+              <p class="text-muted mb-0">
+                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <%= content_tag(:i, "language", class: "material-icons", id: "skill-language") %>
+              <h3 class="mb-3">Language</h3>
+              <p class="text-muted mb-0">
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- blogs -->
     <div class="posts">
-      <div class="col-sm-4 sm-margin-b-50">
-        <div class="margin-b-20">
-          <%= image_tag("03.jpg", alt: "Third slide", class: "d-block w-100") %>
+      <div class="grid">
+        <div class="grid-item">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg" />
         </div>
-                <div class="margin-b-20">
-          <%= image_tag("03.jpg", alt: "Third slide", class: "d-block w-100") %>
+        <div class="grid-item">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/submerged.jpg" />
         </div>
-                <div class="margin-b-20">
-          <%= image_tag("03.jpg", alt: "Third slide", class: "d-block w-100") %>
-        </div>
-                <div class="margin-b-20">
-          <%= image_tag("03.jpg", alt: "Third slide", class: "d-block w-100") %>
+        <div class="grid-item">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/look-out.jpg" />
         </div>
       </div>
     </div>
+    <!-- end-blogs -->
+
 
   </body>
 </html>

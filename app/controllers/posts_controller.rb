@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
 	before_action :find_post, only: [:edit, :update, :show, :delete]
 
   def index
@@ -10,6 +11,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    byebug
     @post = Post.new(post_params)
     if @post.save
       flash[:notice] = "Successfully created post!"

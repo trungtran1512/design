@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users
+  get 'home/index'
   mount Ckeditor::Engine => '/ckeditor'
-	get 'say/goodbye'
-	get 'say/hello'
-	root 'say#hello'
+	root 'home#index'
 	get 'say/about'
 	resources :posts
 end

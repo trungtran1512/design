@@ -13,6 +13,8 @@
 
       <div class="text-center">
         <%= link_to "READ MORE", post_path(post) %>
+        <%= link_to "logout", destroy_user_session_path, method: :delete %>
+        <%= link_to "new post", new_post_path %>
       </div>
       <br>
     </div>

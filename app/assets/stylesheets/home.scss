@@ -1,61 +1,63 @@
 
+body {
+  background-color: #f8f9fa!important;
+}
 .logo-item {
-	display: inline-grid;
-	color: #FFFFFF;
+  display: inline-grid;
+  color: #FFFFFF;
 }
 .material-icons {
-	font-size: 2.5em;
-	text-align: center;
+  font-size: 2.5em;
+  text-align: center;
 }
 
 .navbar .navbar-brand {
-	font-size: 1.5em;
-	margin: auto;
-	font-family: Impact, Charcoal, sans-serif;
-	color: #FFFFFF !important;
-	background: none !important;
-	opacity: unset !important;
+  font-size: 1.5em;
+  margin: auto;
+  font-family: Impact, Charcoal, sans-serif;
+  color: #FFFFFF !important;
+  background: none !important;
+  opacity: unset !important;
 }
 
 .navbar-expand-lg {
-	position: fixed;
-	width: 100%;
-	overflow: hidden;
-	letter-spacing: 1.5px;
-	transition: background .5s ease-in-out,padding .5s ease-in-out;
-	text-transform: uppercase;
-	border-bottom: none;
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  letter-spacing: 1.5px;
+  transition: background .5s ease-in-out,padding .5s ease-in-out;
+  text-transform: uppercase;
+  border-bottom: none;
 }
 
 .navbar-light .navbar-nav .nav-link {
-	text-align: center;
+  text-align: center;
 }
 
 #navbar li a {
-	color: #FFFFFF;
-	font-weight: bold;
+  color: #FFFFFF;
+  font-weight: bold;
 }
 
 #navbar a:hover {
-	background: #C6C1C1;
-	color: #00FFFF;
-	transition: 0.5s;
-	opacity: 0.7;
+  background: #C6C1C1;
+  color: #00FFFF;
+  transition: 0.5s;
+  opacity: 0.7;
 }
 
 .navbar .expand {
-	text-transform: lowercase;
+  text-transform: lowercase;
 }
 
 .logo-item:hover {
-	color: #FF0040;
-	opacity: 0.7;
-	transition: 1s;
+  color: #FF0040;
+  opacity: 0.7;
+  transition: 1s;
 }
 
 .col-lg-8 {
   padding: 20px;
-  background-color: beige;
 }
 
 .w-100 {
@@ -144,7 +146,6 @@ p {
 }
 
 h3 {
-  color: #FA5858;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -161,4 +162,28 @@ li {
 
 .text-light {
   color: #FFFFFF;
+}
+
+h1 {
+  text-transform: uppercase;
+}
+
+.portfolio-caption {
+  background-color: #fff;
+  max-width: 400px;
+  margin: 0 0 20px;
+  padding: 25px;
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  font-family: Montserrat,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+}
+
+.portfolio-caption p {
+  font-size: 16px;
+  font-style: italic;
+  margin: 0;
+  font-family: 'Droid Serif',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
 }

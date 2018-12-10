@@ -33,8 +33,7 @@
               <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Login</a>
-              <!-- <%= link_to "Login", class: "nav-link" %> -->
+              <%= link_to 'Login', new_user_session_path, class: 'nav-link' %>
             </li>
             <li class="nav-item" id="btn-join">
               <a class="nav-link" href="#">Join</a>
@@ -62,12 +61,16 @@
       </div>
     </main>
     <!-- about -->
-    <div class="about">
-      <div class="col-lg-8 mx-auto text-center">
-        <h1>About Me</h1>
-        <hr class ="my-4">
-        <p>Lorem Ipsum: simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        <button type="button" class="btn btn-outline-info">Get started</button>
+    <div class="container">
+      <div class="row">
+        <div class="about">
+          <div class="col-lg-8 mx-auto text-center">
+            <h1>About Me</h1>
+            <hr class ="my-4">
+            <p>Lorem Ipsum: simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <button type="button" class="btn btn-outline-info">Get started</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -85,7 +88,9 @@
         <div class="row">
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
-              <%= content_tag(:i, "https", class: "material-icons", id: "skill-https") %>
+              <i class ="fa fa-android">
+                <%= content_tag(:i, "https", class: "material-icons", id: "skill-https") %>
+              </i>
               <h3 class="mb-3">Study</h3>
               <p class="text-muted mb-0">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -124,22 +129,99 @@
     </div>
     <!-- blogs -->
     <div class="posts">
-      <h1 style="text-align: center;">Posts</h1>
-      <hr class="my-4">
       <div class="container">
-        <div class="grid">
-          <div class="grid-item">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg" />
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h1 style="text-align: center;">Posts</h1>
+            <hr class="my-4">
           </div>
-          <div class="grid-item">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/submerged.jpg" />
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fas fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Image</h4>
+              <p style="text-align: center;" class="text-muted">Trung tran</p>
+            </div>
           </div>
-          <div class="grid-item">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/look-out.jpg" />
+                    <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fas fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Image</h4>
+              <p style="text-align: center;" class="text-muted">Trung tran</p>
+            </div>
           </div>
-          <div class="grid-item">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/look-out.jpg" />
+                    <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fas fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Image</h4>
+              <p style="text-align: center;" class="text-muted">Trung tran</p>
+            </div>
           </div>
+                    <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fas fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Image</h4>
+              <p style="text-align: center;" class="text-muted">Trung tran</p>
+            </div>
+          </div>
+                    <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fas fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Image</h4>
+              <p style="text-align: center;" class="text-muted">Trung tran</p>
+            </div>
+          </div>
+                    <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fas fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Image</h4>
+              <p style="text-align: center;" class="text-muted">Trung tran</p>
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>

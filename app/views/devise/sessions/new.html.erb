@@ -1,23 +1,52 @@
 <div class="container">
-  <h2>Log in</h2>
+  <div class="row">
+    <div class="col-sm">
+      <div class="card">
+        <h5 class="card-header info-color white-text text-center py-4">
+          <strong>Sign in</strong>
+        </h5>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="card-body px-lg-5 pt-0">
+          <form class="text-center" style="color: #757575;">
 
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-inputs">
-      <%= f.input :username, autofocus: true, autocomplete: "username" %>
-      <%= f.input :email,
-                  required: false,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" } %>
-      <%= f.input :password,
-                  required: false,
-                  input_html: { autocomplete: "current-password" } %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            <div class="form-group">
+              <label for="Username" class="bmd-label-floating">Username</label>
+              <%= f.input :username, label: false, required: true, autocomplete: "username", input_html: { class: "form-control" } %>
+              <span class="bmd-help">We'll never share your username with anyone else.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="Email" class="bmd-label-floating">Email</label>
+              <%= f.input :email, label: false, required: true, input_html: { autocomplete: "email", class: "form-control" } %>
+              <span class="bmd-help">We'll never share your email with anyone else.</span>
+            </div>
+
+            <div class="form-group">
+              <label for="Password" class="bmd-label-floating">Password</label>
+              <%= f.input :password, label: false, required: true, input_html: { autocomplete: "current-password", class: "form-control" } %>
+              <span class="bmd-help">We'll never share your password with anyone else.</span>
+            </div>
+            <br>
+
+            <div class="d-flex justify-content-around">
+              <div class="boolean input optional checkbox" id="user_remember_me_input">
+                <input name="user[remember_me]" type="hidden" value="0" />
+                <label class=" control-label" for="user_remember_me">
+                  <input id="user_remember_me" name="user[remember_me]" type="checkbox" value="1" /> Remember me
+                </label>
+              </div>
+            </div>
+            <div class="col-md-4 offset-md-4">
+              <%= f.button :submit, "Log in", class: "btn btn-raised btn-info btn-rounded btn-block my-4 waves-effect z-depth-0" %>
+            </div>
+          </form>
+        </div>
+        <% end %>
+        <div style="text-align: center;">
+          <%= render "devise/shared/links" %>
+          <br>
+        </div>
+      </div>
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Log in", class: 'btn btn-danger' %>
-    </div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
+  </div>
 </div>

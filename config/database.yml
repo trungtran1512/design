@@ -2,6 +2,7 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  socket: /var/run/mysqld/mysqld.sock
 
 local: &local
   <<: *default
@@ -14,14 +15,16 @@ development:
   <<: *local
   database: design_db
 
+
 test:
   <<: *local
-  database: design
+  database: design_db
+
 
 production:
   <<: *default
-  database: design_production
-  username: design
-  password: <%= ENV['SEEDS_MANAGER_DATABASE_PASSWORD'] %>
-  host: design_db
+  database: design_db
+  username: <%= ENV['SM_DB_USER'] %>
+  password: <%= ENV['SM_DB_PASS'] %>
+  host: <%= ENV['SM_DB_HOST'] %>
   port: 3306

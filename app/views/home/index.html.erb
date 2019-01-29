@@ -33,11 +33,10 @@
               <a class="nav-link" href="#">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Login</a>
-              <!-- <%= link_to "Login", class: "nav-link" %> -->
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
             </li>
             <li class="nav-item" id="btn-join">
-              <a class="nav-link" href="#">Join</a>
+              <%= link_to "Join", new_user_registration_path, class: "nav-link" %>
             </li>
           </ul>
         </div>

@@ -100,9 +100,34 @@ hr {
   border-style: inset;
   border-width: 2px;
 }
+
 #outline-danger {
-  border-radius: 56px;
+  border-radius: 30px;
+  color: #fff;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 300%;
 }
+
+#outline-danger:hover {
+  animation: animate 8s linear infinite;
+}
+
+@keyframes animate
+{
+  0%
+  {
+    background-position: 0%;
+  }
+  100%
+  {
+    background-position: 400%;
+  }
+}
+
+#outline-danger:before {
+  filter: blur(20px);
+}
+
 
 .btn-outline-info {
   font-size: 1.5rem;

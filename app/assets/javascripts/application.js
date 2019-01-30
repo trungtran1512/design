@@ -14,6 +14,5 @@
 //= require activestorage
 //= require jquery
 //= require ckeditor/init
-//= require masonry/jquery.masonry
 //= require turbolinks
 //= require_tree .

@@ -212,3 +212,11 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-family: 'Droid Serif',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
 }
+
+.card .card-header {
+  background: linear-gradient(to right, #ff3399 0%, #00ffff 100%) !important;
+}
+
+.form-control .mr-sm-2 {
+  transition: 5s !important;
+}

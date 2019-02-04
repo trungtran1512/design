@@ -16,10 +16,3 @@ function scrollFunction() {
     document.getElementById("navbar").style.backgroundColor = "unset";
   }
 }
-
-
-$('.grid').masonry({
-  // options
-  itemSelector: '.grid-item',
-  columnWidth: 200
-});

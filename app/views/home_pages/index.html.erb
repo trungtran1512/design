@@ -7,8 +7,7 @@
     <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
       <div class="container">
         <div class="logo-item">
-          <%= content_tag(:i, "3d_rotation", class: "material-icons") %>
-          <a class="navbar-brand" href="#">Design</a>
+          <%= image_tag("l.png", alt: "logo_design", style: "height: 120px;") %>
         </div>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,19 +17,16 @@
         <div class="main-container">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#">About<span class="sr-only">(current)</span></a>
+              <%= link_to "About", root_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Skill</a>
+              <%= link_to "Post", posts_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Post</a>
+              <%= link_to "Photo", posts_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Photo</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <%= link_to "Contact", posts_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to "Login", new_user_session_path, class: "nav-link" %>
@@ -49,9 +45,10 @@
             <%= image_tag("01.jpg", alt: "First slide", class: "d-block w-100") %>
               <div class="carousel-caption mx-auto">
                 <h1 class="text-uppercase">
-                  <strong> where there is a will there is a way! </strong>
+                  <strong> where there is a will <br> there is a way! </strong>
                 </h1>
-                <button type="button" class="btn btn-outline-danger" id="outline-danger">Find out more</button>
+                <br>
+                <button type="button" class="btn btn-outline-secondary" id="outline-danger">Find out more</button>
                 <br>
                 <hr>
                 <span>Design by: Trung Tran</span>

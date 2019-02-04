@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
     payload[:referer] = request.referer
     payload[:user_agent] = request.user_agent
     payload[:user_id] = current_user.id if user_signed_in?
-    payload[:user_name] = current_user.name if user_signed_in?
+    payload[:user_name] = current_user.username if user_signed_in?
   end
 end

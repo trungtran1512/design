@@ -7,6 +7,8 @@
         <div class="card">
           <h5 class="card-header info-color white-text text-center py-4">
             <strong style="color: #fff;"> SIGN IN </strong>
+            <p style="text-align: center; opacity: 0.4; font-family: cursive;"> Welcome to design </p>
+            <%= link_to '#homepage', root_path, class: 'btn btn-outline-dark' %>
           </h5>
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="card-body px-lg-5 pt-0">
@@ -19,17 +21,10 @@
               </div>
 
               <div class="form-group">
-                <label for="Email" class="bmd-label-floating">Email</label>
-                <%= f.input :email, label: false, required: true, input_html: { autocomplete: "email", class: "form-control" } %>
-                <span class="bmd-help">We'll never share your email with anyone else.</span>
-              </div>
-
-              <div class="form-group">
                 <label for="Password" class="bmd-label-floating">Password</label>
                 <%= f.input :password, label: false, required: true, input_html: { autocomplete: "current-password", class: "form-control" } %>
                 <span class="bmd-help">We'll never share your password with anyone else.</span>
               </div>
-              <br>
 
               <div class="d-flex justify-content-around">
                 <div class="boolean input optional checkbox" id="user_remember_me_input">

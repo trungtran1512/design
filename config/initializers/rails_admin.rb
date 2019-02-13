@@ -9,6 +9,16 @@ RailsAdmin.config do |config|
      end
   end
 
+    config.model User do
+     edit do
+       field :id
+       field :email
+       field :username
+       field :created_at
+       field :password
+     end
+  end
+
   ### Popular gems integration
 
   ## == Devise ==

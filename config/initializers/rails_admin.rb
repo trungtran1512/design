@@ -11,7 +11,6 @@ RailsAdmin.config do |config|
 
     config.model User do
      edit do
-       field :id
        field :admin
        field :email
        field :username

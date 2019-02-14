@@ -50,6 +50,34 @@ body {
   text-transform: lowercase;
 }
 
+
+.animation1 {
+  color: #ffdc00;
+  animation: animation 3s 1;
+}
+
+@keyframes animation {
+  0% {
+    color: #aaaaaa;
+  }
+
+  25% {
+    letter-spacing: 20px;
+    color: #39cccc;
+  }
+
+  50% {
+    letter-spacing: 10px;
+    color: #f012be;
+    opacity: 0.8;
+  }
+
+  75% {
+    letter-spacing: 30px;
+    color: #ffdc00;
+  }
+}
+
 .logo-item:hover {
   color: #FF0040;
   opacity: 0.7;

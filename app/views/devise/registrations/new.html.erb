@@ -7,9 +7,11 @@
         <div class="card">
           <h5 class="card-header info-color white-text text-center py-4">
             <strong style="color: #fff;">SIGN UP</strong>
+            <p style="text-align: center; opacity: 0.4; font-family: cursive;"> Sign up for the design </p>
+            <%= link_to '#homepage', root_path, class: 'btn btn-outline-dark' %>
           </h5>
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= f.error_notification %>
+          <div style="text-align: center; color: rgb(255, 0, 0);"> <%= f.error_notification %> </div>
           <div class="card-body px-lg-5 pt-0">
             <form class="text-center" style="color: #757575;">
 

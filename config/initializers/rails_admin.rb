@@ -12,10 +12,17 @@ RailsAdmin.config do |config|
     config.model User do
      edit do
        field :id
+       field :admin
        field :email
        field :username
        field :created_at
-       field :password
+     end
+      show do
+       field :id
+       field :admin
+       field :email
+       field :username
+       field :created_at
      end
   end
 

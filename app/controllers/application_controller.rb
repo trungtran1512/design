@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
 
   protected
   def configure_permitted_parameters
-   devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
-   devise_parameter_sanitizer.permit(:sign_in, keys: [:username])
-   devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation) }
+    devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:username, :password) }
+    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:username, :email, :password, :password_confirmation) }
   end
 
   def append_info_to_payload(payload)

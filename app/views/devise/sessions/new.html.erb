@@ -25,6 +25,12 @@
                 <%= f.input :password, label: false, required: true, input_html: { autocomplete: "current-password", class: "form-control" } %>
                 <span class="bmd-help">We'll never share your password with anyone else.</span>
               </div>
+              <!-- show flash -->
+                <% flash.each do |key, value| %>
+                  <% if key == "alert" %>
+                    <%= content_tag :div, value, class: "alert alert-danger", style: "text-align: center;" %>
+                  <% end %>
+                <% end %>
 
               <div class="d-flex justify-content-around">
                 <div class="boolean input optional checkbox" id="user_remember_me_input">

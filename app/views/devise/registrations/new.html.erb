@@ -11,10 +11,12 @@
             <%= link_to '#homepage', root_path, class: 'btn btn-outline-dark' %>
           </h5>
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <div style="text-align: center; color: rgb(255, 0, 0);"> <%= f.error_notification %> </div>
+
           <div class="card-body px-lg-5 pt-0">
             <form class="text-center" style="color: #757575;">
-
+            <% if f.error_notification.present? %>
+              <br><%= content_tag :div, f.error_notification , class: "alert alert-danger", style: "text-align: center;" %>
+            <% end %>
               <div class="form-group">
                 <label for="Username" class="bmd-label-floating">Username</label>
                 <%= f.input :username, label: false, required: true, autocomplete: "username", input_html: { class: "form-control" } %>
@@ -29,7 +31,7 @@
 
               <div class="form-group">
                 <label for="Password" class="bmd-label-floating">Password</label>
-                <%= f.input :password, label: false, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password", class: "form-control" } %>
+                <%= f.input :password, label: false, required: true, hint: ("#{@minimum_password_length} characters minimum " if @minimum_password_length), input_html: { autocomplete: "new-password", class: "form-control" } %>
                 <span class="bmd-help">We'll never share your password with anyone else.</span>
               </div>
 

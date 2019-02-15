@@ -19,6 +19,9 @@
             <li class="nav-item active">
               <%= link_to "About", root_path, class: "nav-link" %>
             </li>
+            <li class="nav-item active">
+              <%= link_to "Submit a photo", root_path, class: "nav-link" %>
+            </li>
             <li class="nav-item">
               <%= link_to "Photo by me", posts_path, class: "nav-link" %>
             </li>
@@ -26,10 +29,16 @@
               <%= link_to "Colections", posts_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+              <% if user_signed_in? %>
+              <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "nav-link") %>
+              <% else %>
+                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+                <% end %>
             </li>
             <li class="nav-item" id="btn-join">
-              <%= link_to "Join Free", new_user_registration_path, class: "nav-link" %>
+              <% if !user_signed_in? %>
+                <%= link_to "Join Free", new_user_registration_path, class: "nav-link" %>
+                <% end %>
             </li>
           </ul>
         </div>

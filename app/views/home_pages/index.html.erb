@@ -77,19 +77,17 @@
         </div>
         <br>
         <div class="menu_color">
-          <div class="card" style="width: 18rem;">
+          <div class="card" style="width: 18rem; display: contents;">
             <% @colors.each do |color| %>
-              <div class="card-body">
+              <div class="card-body" style="background: <%= color.code %> color: #fff;">
                 <h5 class="card-title"><%= color.name %></h5>
-                <p class="card-text" style="text-align: center;"><%= color.code %></p>
+                <p class="card-text" style="text-align: center;"><%= color.code.first(7).upcase %></p>
               </div>
             <% end %>
           </div>
         </div>
       </div>
     </div>
-
-
 
     <!-- about -->
     <div class="about">

@@ -13,6 +13,23 @@ body {
   text-align: center;
 }
 
+.card-body {
+
+  &:after {
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    border-radius: 5px;
+
+    &:after {
+      opacity: 0;
+    }
+  }
+}
+
+
 .navbar .navbar-brand {
   font-size: 1.5em;
   margin: auto;

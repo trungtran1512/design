@@ -7,7 +7,7 @@
     <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
       <div class="container">
         <div class="logo-item">
-          <%= image_tag("l.png", alt: "logo_design", style: "height: 120px;") %>
+          <%= link_to image_tag("l.png", alt: "logo_design", style: "height: 120px;"), root_path %>
         </div>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,20 +19,26 @@
             <li class="nav-item active">
               <%= link_to "About", root_path, class: "nav-link" %>
             </li>
-            <li class="nav-item">
-              <%= link_to "Post", posts_path, class: "nav-link" %>
+            <li class="nav-item active">
+              <%= link_to "Submit a photo", root_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Photo", posts_path, class: "nav-link" %>
+              <%= link_to "Photo by me", posts_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Contact", posts_path, class: "nav-link" %>
+              <%= link_to "Colections", posts_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+              <% if user_signed_in? %>
+              <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "nav-link") %>
+              <% else %>
+                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+                <% end %>
             </li>
             <li class="nav-item" id="btn-join">
-              <%= link_to "Join", new_user_registration_path, class: "nav-link" %>
+              <% if !user_signed_in? %>
+                <%= link_to "Join Free", new_user_registration_path, class: "nav-link" %>
+                <% end %>
             </li>
           </ul>
         </div>
@@ -44,14 +50,15 @@
           <div class="carousel-item active">
             <%= image_tag("01.jpg", alt: "First slide", class: "d-block w-100") %>
               <div class="carousel-caption mx-auto">
-                <h1 class="text-uppercase">
-                  <strong> where there is a will <br> there is a way! </strong>
+                <h1 class="text-uppercase" style="font-family: cursive;">
+                  <strong class="animation1"> Design </strong>
                 </h1>
+                <p style="text-align: center; opacity: 0.8;" class="animation2">Beautiful, free photos <br> Gifted by the world’s most generous community of photographers. 🎁</p>
                 <br>
                 <button type="button" class="btn btn-outline-secondary" id="outline-danger">Find out more</button>
                 <br>
                 <hr>
-                <span>Design by: Trung Tran</span>
+                <span class="badge badge-pill badge-info">Design by: Trung Tran</span>
             </div>
           </div>
         </div>
@@ -59,7 +66,7 @@
     </main>
     <!-- about -->
     <div class="about">
-      <div class="col-lg-8 mx-auto text-center">
+      <div class="col-lg-6 mx-auto text-center">
         <h1>About Me</h1>
         <hr class ="my-4">
         <p>Lorem Ipsum: simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>

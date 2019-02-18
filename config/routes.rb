@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+  root 'home_pages#index'
   get 'home_pages/index'
+  devise_for :users
+
+  resources :users
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  get '/dashboard' => "dashboard#index", as: :dashboard
+
   mount Ckeditor::Engine => '/ckeditor'
-	root 'home_pages#index'
-	resources :posts
+  resources :posts
 end

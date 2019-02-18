@@ -9,6 +9,22 @@ RailsAdmin.config do |config|
      end
   end
 
+    config.model User do
+     edit do
+       field :admin
+       field :email
+       field :username
+       field :created_at
+     end
+      show do
+       field :id
+       field :admin
+       field :email
+       field :username
+       field :created_at
+     end
+  end
+
   ### Popular gems integration
 
   ## == Devise ==

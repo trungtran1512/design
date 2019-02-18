@@ -64,9 +64,37 @@
         </div>
       </div>
     </main>
+
+    <!-- color -->
+    <div class="color" style="padding-top: 20px;">
+      <div class="col-lg-6 mx-auto text-center">
+        <br>
+        <h1>The New Defaults</h1>
+        <div class="animation2">
+          <p style="text-align: center;"> Skinning your prototypes just got easier - colors.css is a collection of skin classes to use while prototyping in the browser. </p>
+          <span style="text-align: center; font-weight: bold;"> 647 Bytes </span>
+          <span> minified and gzipped. </span>
+        </div>
+        <br>
+        <div class="menu_color">
+          <div class="card" style="width: 18rem;">
+            <% @colors.each do |color| %>
+              <div class="card-body">
+                <h5 class="card-title"><%= color.name %></h5>
+                <p class="card-text" style="text-align: center;"><%= color.code %></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
     <!-- about -->
     <div class="about">
       <div class="col-lg-6 mx-auto text-center">
+        <br>
         <h1>About Me</h1>
         <hr class ="my-4">
         <p>Lorem Ipsum: simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>

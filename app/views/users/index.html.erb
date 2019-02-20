@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body { font-family: "Times New Roman", Georgia, Serif; }
+h1, h2, h4, h5, h6 {
+  font-family: "Playfair Display";
+  letter-spacing: 5px;
+}
+h3 {
+  letter-spacing: 2px;
+}
+</style>
+<head>
+</head>
+  <body>
+    <!-- header -->
+    <nav class="navbar navbar-expand-lg navbar-light" id="navbar_user">
+      <div class="container">
+        <div class="logo-item">
+          <%= image_tag("l.png", alt: "logo_design", style: "height: 60px;") %>
+        </div>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <%= content_tag(:i, "blur_on", class: "material-icons", style: "color: white;") %>
+      </button>
+      <div class="collapse navbar-collapse nav-collapse" id="navbarNavDropdown">
+        <div class="main-container">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <%= link_to "Home", root_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "Submit a photo", new_post_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <a href="#posts" class="nav-link">Photo by me</a>
+            </li>
+            <li class="nav-item">
+              <% if user_signed_in? %>
+              <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "nav-link") %>
+              <% else %>
+                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+                <% end %>
+            </li>
+            <li class="nav-item" id="btn-join">
+              <% if !user_signed_in? %>
+                <%= link_to "Join Free", new_user_registration_path, class: "nav-link" %>
+              <% else %>
+                <%= link_to "#{current_user.username}", users_path, class: "nav-link" %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+		<br>
+    <!-- user & post -->
+    <div class="w3-content" style="max-width:1100px">
+      <div class="w3-row w3-padding-64" id="profile" style="border-radius: 100%;">
+        <div class="w3-col m6 w3-padding-large w3-hide-small">
+         <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750" style="border-radius: 100%;">
+        </div>
+
+        <div class="w3-col m6 w3-padding-large">
+          <h1 class="w3-center">Welcome: <%= current_user.username %></h1><br>
+          <h5 class="w3-center">Information</h5>
+          <div style="text-align: center;"><%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-outline-dark", style: "text-align: center;" %></div>
+          <p class="w3-large"><span class="w3-tag w3-light-grey">Download free, beautiful high-quality photos curated by: <%= current_user.username %>.</span></p>
+          <p class="w3-large w3-text-grey w3-hide-medium"></p>
+          <div class="alert alert-primary" role="alert">
+					  Username: <%= current_user.username %>
+					</div>
+					<div class="alert alert-secondary" role="alert">
+					  Admin: <%= current_user.admin %>
+					</div>
+					<div class="alert alert-success" role="alert">
+					  Email: <%= current_user.email %>
+					</div>
+					<p class="w3-center" style="">Count images: <%= current_user.posts.all.size %> </p>
+          <div id="posts"></div>
+        </div>
+      </div>
+    <hr class="w3-opacity">
+    <div class="w3-row-padding w3-padding-16 w3-center">
+      <div class="card w3-quarter" style="height: 400px;">
+        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Sandwich" style="width:100%">
+        <h3>The Perfect Sandwich, A Real</h3>
+        <p class="card-footer text-muted">Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
+      <div class="card w3-quarter" style="height: 400px;">
+        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Steak" style="width:100%">
+        <h3>Let Me Tell You About This Steak</h3>
+        <p class="card-footer text-muted">Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
+      <div class="card w3-quarter" style="height: 400px;">
+        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Cherries" style="width:100%">
+        <h3>Cherries, interrupted</h3>
+        <p class="card-footer text-muted">Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
+      <div class="card w3-quarter" style="height: 400px;">
+        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Pasta and Wine" style="width:100%">
+        <h3>Once Again, Robust Wine</h3>
+        <p class="card-footer text-muted">Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
+    </div>
+
+    <!-- Second Photo Grid-->
+    <div class="w3-row-padding w3-padding-16 w3-center">
+      <div class="card w3-quarter" style="height: 400px;">
+        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Popsicle" style="width:100%">
+        <h3>All I Need Is a Popsicle</h3>
+        <p class="card-footer text-muted">Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
+      <div class="card w3-quarter" style="height: 400px;">
+        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Salmon" style="width:100%">
+        <h3>Salmon For Your Skin</h3>
+        <p class="card-footer text-muted">Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
+      <div class="card w3-quarter" style="height: 400px;">
+        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Sandwich" style="width:100%">
+        <h3>The Perfect Sandwich</h3>
+        <p class="card-footer text-muted">Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
+      <div class="card w3-quarter" style="height: 400px;">
+        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Croissant" style="width:100%">
+        <h3>Le French the fraces</h3>
+        <p class="card-footer text-muted">Lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="w3-center w3-padding-32">
+      <div class="w3-bar">
+        <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
+        <a href="#" class="w3-bar-item w3-black w3-button">1</a>
+        <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
+        <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
+        <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
+        <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+      </div>
+    </div>
+
+  </body>
+</html>

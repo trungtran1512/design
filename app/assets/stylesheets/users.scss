@@ -1,0 +1,15 @@
+#navbar_user {
+	background: #85144b;
+}
+
+#navbar_user li a {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+#navbar_user a:hover {
+  background: #c6c1c1;
+  color: #008080;
+  transition: 0.8s;
+  opacity: 0.5;
+}

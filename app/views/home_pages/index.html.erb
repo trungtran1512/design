@@ -19,7 +19,7 @@ h3 {
     <nav class="navbar navbar-expand-lg navbar-light" id="navbar">
       <div class="container">
         <div class="logo-item">
-          <%= link_to image_tag("l.png", alt: "logo_design", style: "height: 60px;"), root_path %>
+          <%= image_tag("l.png", alt: "logo_design", style: "height: 60px;") %>
         </div>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@ h3 {
               <a href="#skill" class="nav-link"> Skill </a>
             </li>
             <li class="nav-item active">
-              <%= link_to "Submit a photo", root_path, class: "nav-link" %>
+              <%= link_to "Submit a photo", new_post_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to "Photo by me", posts_path, class: "nav-link" %>
@@ -56,7 +56,9 @@ h3 {
             <li class="nav-item" id="btn-join">
               <% if !user_signed_in? %>
                 <%= link_to "Join Free", new_user_registration_path, class: "nav-link" %>
-                <% end %>
+              <% else %>
+                <%= link_to "#{current_user.username}", users_path, class: "nav-link" %>
+              <% end %>
             </li>
           </ul>
         </div>
@@ -281,6 +283,9 @@ h3 {
         </div>
       </div>
     </footer>
-     <div class="w3-black w3-center w3-padding-24">Powered by: <a href="#" title="W3.CSS" target="_blank" class="w3-hover-opacity">trungpro151224@gmail.com</a></div>
+     <div class="w3-black w3-center w3-padding-24">
+        <a href="#" class="w3-button w3-light-grey" style="border-radius: 40px;"><i class="material-icons">pets</i></a>
+        <br>
+      Powered by: <a href="#" title="W3.CSS" target="_blank" class="w3-hover-opacity">trungpro151224@gmail.com</a></div>
   </body>
 </html>

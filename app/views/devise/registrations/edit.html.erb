@@ -65,6 +65,7 @@ h3 {
           <%= link_to '#homepage', root_path, class: 'btn btn-outline-dark' %>
         </h5>
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.input :avatar, as: :file %>
           <div class="card-body px-lg-5 pt-0">
             <form class="text-center" style="color: #757575;">
               <% if f.error_notification.present? %>
@@ -101,7 +102,7 @@ h3 {
               <div class="form-group">
                 <label for="Location" class="bmd-label-floating">Location</label>
                 <%= f.input :location, label: false, required: true, autocomplete: "location", input_html: { class: "form-control" } %>
-                <span class="bmd-help">We'll never share your username with anyone else.</span>
+                <span class="bmd-help">We'll never share your location with anyone else.</span>
               </div>
 
               <div class="form-group">

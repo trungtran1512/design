@@ -59,9 +59,9 @@ h3 {
     <!-- user & post -->
     <div class="w3-content" style="max-width:1100px">
       <div class="w3-row w3-padding-64" id="profile" style="border-radius: 100%;">
-        <div class="w3-col m6 w3-padding-large w3-hide-small">
-        	<br><br><br><br><br><br>
-         <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750" style="border-radius: 100%;">
+        <div class="w3-col m6 w3-padding-large">
+        	<br><br>
+         <%= image_tag current_user.avatar.url(:large), class: "w3-round w3-image w3-min", style: "height:500px; width:500px;" %>
         </div>
 
         <div class="w3-col m6 w3-padding-large">
@@ -88,7 +88,7 @@ h3 {
 					  Phone number: <%= current_user.phone %>
 					</div>
 					<div class="alert alert-info" role="alert">
-					  Location: <%= current_user.location %>
+					  Location: <%= truncate(current_user.location, length: 70, omission: "...#{current_user.location[-5, 5]}") %>
 					</div>
 					<p class="w3-center" style="">Count images: <%= current_user.posts.all.size %> </p>
           <div id="posts"></div>

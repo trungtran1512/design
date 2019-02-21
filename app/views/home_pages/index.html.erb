@@ -99,7 +99,7 @@ h3 {
         <div class="menu_color">
           <div class="card" style="width: 18rem; display: contents;">
             <% @colors.each do |color| %>
-              <div class="card-body" style="background: <%= color.code %> color: #fff;">
+              <div class="card-body" style="background: <%= color.code %> color: #fff;" id="card-body">
                 <h5 class="card-title"><%= color.name %></h5>
                 <p class="card-text" style="text-align: center;"><%= color.code.first(7).upcase %></p>
               </div>

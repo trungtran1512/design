@@ -60,6 +60,7 @@ h3 {
     <div class="w3-content" style="max-width:1100px">
       <div class="w3-row w3-padding-64" id="profile" style="border-radius: 100%;">
         <div class="w3-col m6 w3-padding-large w3-hide-small">
+        	<br><br><br><br><br><br>
          <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750" style="border-radius: 100%;">
         </div>
 
@@ -70,13 +71,24 @@ h3 {
           <p class="w3-large"><span class="w3-tag w3-light-grey">Download free, beautiful high-quality photos curated by: <%= current_user.username %>.</span></p>
           <p class="w3-large w3-text-grey w3-hide-medium"></p>
           <div class="alert alert-primary" role="alert">
-					  Username: <%= current_user.username %>
+					  User name: <%= current_user.username %>
 					</div>
 					<div class="alert alert-secondary" role="alert">
-					  Admin: <%= current_user.admin %>
+					  Full name: <%= current_user.fullname %>
 					</div>
-					<div class="alert alert-success" role="alert">
+					<% if current_user.admin == true %>
+						<div class="alert alert-success" role="alert">
+						  Admin: <%= current_user.admin %>
+						</div>
+					<% end %>
+					<div class="alert alert-danger" role="alert">
 					  Email: <%= current_user.email %>
+					</div>
+					<div class="alert alert-warning" role="alert">
+					  Phone number: <%= current_user.phone %>
+					</div>
+					<div class="alert alert-info" role="alert">
+					  Location: <%= current_user.location %>
 					</div>
 					<p class="w3-center" style="">Count images: <%= current_user.posts.all.size %> </p>
           <div id="posts"></div>

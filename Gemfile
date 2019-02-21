@@ -10,7 +10,6 @@ gem 'sass-rails', '~> 5.0'
 gem "cancancan"
 gem 'mini_magick'
 gem 'uglifier', '>= 1.3.0'
-gem 'ckeditor', '~> 4.2', '>= 4.2.4'
 gem 'paperclip', '~> 6.1'
 gem 'bootstrap-material-design', '~> 0.2.2'
 gem 'popper_js', '~> 1.9', '>= 1.9.9'

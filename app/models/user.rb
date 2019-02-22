@@ -24,4 +24,7 @@ class User < ApplicationRecord
 
   validates :location, length: { maximum: 100, message: "The maximum length is 100 characters" }, presence: true
 
+  validates :avatar, format: {
+                    with: %r{\.jpg|jpeg|gif|png}i,
+                    message: 'File must be a url for JPG, JPEG, GIF or PNG image.' }
 end

@@ -51,6 +51,20 @@ Rails.application.configure do
     password: ENV["GMAIL_PASSWORD"]
     }
 
+  # config.paperclip_defaults = {
+  #   url: ':s3_domain_url',
+  #   path: '/:class/:attachment/:id_partition/:style/:filename',
+  #   command_path: '/usr/bin/convert',
+  #   storage: :s3,
+  #   s3_credentials: {
+  #     bucket: 'design-management-images',
+  #     access_key_id: 'AKIAIMWY3T4I2A3GCJ6Q',
+  #     secret_access_key: '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',
+  #     s3_region: 'us-west-2',
+  #     s3_protocol: 'https'
+  #   }
+  # }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

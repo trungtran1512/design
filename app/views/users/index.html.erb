@@ -61,7 +61,9 @@ h3 {
       <div class="w3-row w3-padding-64" id="profile" style="border-radius: 100%;">
         <div class="w3-col m6 w3-padding-large">
         	<br><br>
-         <%= image_tag current_user.avatar.url(:large), class: "w3-round w3-image w3-min", style: "height:500px; width:500px;" %>
+          <% if current_user.avatar? %>
+            <%= image_tag current_user.avatar.url, class: "w3-round w3-image w3-min", style: "height:500px; width:500px; border-radius: 100%;" %>
+            <% end %>
         </div>
 
         <div class="w3-col m6 w3-padding-large">

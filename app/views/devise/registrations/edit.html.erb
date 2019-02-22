@@ -65,12 +65,16 @@ h3 {
           <%= link_to '#homepage', root_path, class: 'btn btn-outline-dark' %>
         </h5>
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= f.input :avatar, as: :file %>
           <div class="card-body px-lg-5 pt-0">
             <form class="text-center" style="color: #757575;">
               <% if f.error_notification.present? %>
                 <br><%= content_tag :div, f.error_notification , class: "alert alert-danger", style: "text-align: center;" %>
               <% end %>
+
+              <div class="form-group">
+                <label for="Fullname" class="bmd-label-floating"></label>
+                <%= f.input :avatar, as: :file, label: 'Upload Attachment' %>
+              </div>
 
               <div class="form-group">
                 <label for="Fullname" class="bmd-label-floating">Fullname</label>

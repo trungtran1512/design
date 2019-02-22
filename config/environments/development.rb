@@ -12,8 +12,6 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
-  config.action_mailer.perform_deliveries = false
-
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
@@ -35,6 +33,8 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
 
+  config.action_mailer.perform_deliveries = true
+
   config.action_mailer.perform_caching = false
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
@@ -44,26 +44,12 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
-    domain: "domain.com",
+    domain: "gmail.com",
     authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: "trung.th@gmail.com",
-    password: ENV["GMAIL_PASSWORD"]
+    user_name: "trungpro151224@gmail.com",
+    password: "tjrxuahkmhthzsrn",
+    enable_starttls_auto: true
     }
-
-  # config.paperclip_defaults = {
-  #   url: ':s3_domain_url',
-  #   path: '/:class/:attachment/:id_partition/:style/:filename',
-  #   command_path: '/usr/bin/convert',
-  #   storage: :s3,
-  #   s3_credentials: {
-  #     bucket: 'design-management-images',
-  #     access_key_id: 'AKIAIMWY3T4I2A3GCJ6Q',
-  #     secret_access_key: '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',
-  #     s3_region: 'us-west-2',
-  #     s3_protocol: 'https'
-  #   }
-  # }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

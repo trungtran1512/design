@@ -73,7 +73,7 @@ h3 {
 
               <div class="form-group">
                 <label for="Fullname" class="bmd-label-floating"></label>
-                <%= f.input :avatar, as: :file, label: 'Upload Attachment' %>
+                <%= f.input :avatar, as: :file, label: 'Upload Avatar' %>
               </div>
 
               <div class="form-group">
@@ -130,6 +130,7 @@ h3 {
 
               <div class="col-md-4 offset-md-4">
                 <%= f.button :submit, "Update", class: "btn btn-raised btn-info btn-rounded btn-block my-4 waves-effect z-depth-0" %>
+                <%= link_to "Back", users_path, class: "btn btn-raised btn-info btn-rounded btn-block my-4 waves-effect z-depth-0" %>
               </div>
             </form>
           </div>

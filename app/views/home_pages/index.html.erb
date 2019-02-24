@@ -2,6 +2,7 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <%= javascript_include_tag "home_pages.js" %>
 <style>
 body { font-family: "Times New Roman", Georgia, Serif; }
 h1, h2, h4, h5, h6 {
@@ -111,17 +112,9 @@ h3 {
     <div class="w3-content" style="max-width:1100px">
       <!-- About Section -->
 
-      <div style="display:none;">
-        <div id="demo2_tip">
-          <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" />
-          <h3>SEO Friendly</h3>
-            The tooltip content is from another element in the page. This approach is <b>Search Engine Friendly</b>.
-        </div>
-      </div>
-      <!--  -->
       <div class="w3-row w3-padding-64" id="about">
         <div class="w3-col m6 w3-padding-large w3-hide-small">
-         <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+         <img src="https://s3.amazonaws.com/design-s3-image/development/user/avatar/1/52065902_2199459166969927_6667806095609692160_n.png" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
         </div>
 
         <div class="w3-col m6 w3-padding-large">
@@ -132,64 +125,18 @@ h3 {
           <div id="posts"></div>
         </div>
       </div>
+
     <hr class="w3-opacity">
     <div class="w3-row-padding w3-padding-16 w3-center">
-      <div class="card w3-quarter" style="height: 400px;">
-        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Sandwich" style="width:100%">
-        <h3>The Perfect Sandwich, A Real</h3>
-        <p class="card-footer text-muted">Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="card w3-quarter" style="height: 400px;">
-        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Steak" style="width:100%">
-        <h3>Let Me Tell You About This Steak</h3>
-        <p class="card-footer text-muted">Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="card w3-quarter" style="height: 400px;">
-        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Cherries" style="width:100%">
-        <h3>Cherries, interrupted</h3>
-        <p class="card-footer text-muted">Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="card w3-quarter" style="height: 400px;">
-        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Pasta and Wine" style="width:100%">
-        <h3>Once Again, Robust Wine</h3>
-        <p class="card-footer text-muted">Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-    </div>
-
-    <!-- Second Photo Grid-->
-    <div class="w3-row-padding w3-padding-16 w3-center">
-      <div class="card w3-quarter" style="height: 400px;">
-        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Popsicle" style="width:100%">
-        <h3>All I Need Is a Popsicle</h3>
-        <p class="card-footer text-muted">Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="card w3-quarter" style="height: 400px;">
-        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Salmon" style="width:100%">
-        <h3>Salmon For Your Skin</h3>
-        <p class="card-footer text-muted">Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="card w3-quarter" style="height: 400px;">
-        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Sandwich" style="width:100%">
-        <h3>The Perfect Sandwich</h3>
-        <p class="card-footer text-muted">Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="card w3-quarter" style="height: 400px;">
-        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Croissant" style="width:100%">
-        <h3>Le French the fraces</h3>
-        <p class="card-footer text-muted">Lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-    </div>
-
-    <!-- Pagination -->
-    <div class="w3-center w3-padding-32">
-      <div class="w3-bar">
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
-        <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
-      </div>
+      <% @post.each do |post| %>
+        <div class="w3-quarter">
+          <% if post.image? %>
+            <%= image_tag post.image.url, style: "width:100%;" %>
+          <% end %>
+          <h3><%= post.title %></h3>
+          <p class="w3-center"><%= post.discription %></p>
+        </div>
+      <% end %>
     </div>
 
     <!-- skill -->
@@ -259,12 +206,12 @@ h3 {
           <h3>BLOG POSTS</h3>
           <ul class="w3-ul">
             <li class="w3-padding-16 w3-hover-black">
-              <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1537693144115-1ed17daaea70.jpeg" class="w3-left w3-margin-right" style="width:50px">
+              <img src="" class="w3-left w3-margin-right" style="width:50px">
               <span class="w3-large">Lorem</span><br>
               <span>Sed mattis nunc</span>
             </li>
             <li class="w3-padding-16 w3-hover-black">
-              <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1537693144115-1ed17daaea70.jpeg" class="w3-left w3-margin-right" style="width:50px">
+              <img src="" class="w3-left w3-margin-right" style="width:50px">
               <span class="w3-large">Ipsum</span><br>
               <span>Praes tinci sed</span>
             </li>

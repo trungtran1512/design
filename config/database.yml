@@ -24,7 +24,7 @@ test:
 production:
   <<: *default
   database: design_db
-  username: <%= ENV['SM_DB_USER'] %>
-  password: <%= ENV['SM_DB_PASS'] %>
-  host: <%= ENV['SM_DB_HOST'] %>
+  username: design
+  password: design
+  host: design_db
   port: 3306

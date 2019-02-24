@@ -17,14 +17,14 @@ class User < ApplicationRecord
 
   validates :fullname, presence: true, length: { maximum: 50, message: "Invite to re-enter the full name in lengths maximum 50 characters" }
 
-  validates :phone, presence: true,
-                    numericality: true,
+  validates :phone, numericality: true,
+                    allow_blank: true,
                     length: { minimum: 10, maximum: 14, message: "Invite to re-enter the phone number format from 10 to 14 numbers" },
                     format: { with: /^\d{2,4}\-?\d{2,4}\-?\d{2,4}$/, multiline: true, message: "Invalid phone number format please re-enter" }
 
-  validates :location, length: { maximum: 100, message: "The maximum length is 100 characters" }, presence: true
+  validates :location, length: { maximum: 100, message: "The maximum length is 100 characters" }
 
   validates :avatar, format: {
                     with: %r{\.jpg|jpeg|gif|png}i,
-                    message: 'File must be a url for JPG, JPEG, GIF or PNG image.' }
+                    message: 'File must be a url for JPG, JPEG, GIF or PNG image.' }, allow_blank: true
 end

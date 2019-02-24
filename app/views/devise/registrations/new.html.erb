@@ -17,6 +17,13 @@
             <% if f.error_notification.present? %>
               <br><%= content_tag :div, f.error_notification , class: "alert alert-danger", style: "text-align: center;" %>
             <% end %>
+
+              <div class="form-group">
+                <label for="Fullname" class="bmd-label-floating">Fullname</label>
+                <%= f.input :fullname, label: false, required: true, autocomplete: "fullname", input_html: { class: "form-control" } %>
+                <span class="bmd-help">We'll never share your fullname with anyone else.</span>
+              </div>
+
               <div class="form-group">
                 <label for="Username" class="bmd-label-floating">Username</label>
                 <%= f.input :username, label: false, required: true, autocomplete: "username", input_html: { class: "form-control" } %>

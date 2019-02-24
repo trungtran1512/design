@@ -1,0 +1,3 @@
+顧客名（顧客コード）,id,name,email,code,schema,port,status,plan,uses,deletion,created_at,updated_at
+スターバックスコーヒージャパン株式会社 (eoy0),1,スターバックスコーヒージャパン株式会社,dummy@hitomgr.jp,eoy0,sm,48006,0,1,アルバイト,0,2018-12-26 09:20:43 UTC,2018-12-26 09:44:12 UTC
+スターバックスコーヒージャパン株式会社 (eoy0),2,顧客情報管理,trungxx@gmail.com,6gmn,sm,12345,0,2,dfdsf,0,2018-12-31 16:07:18 UTC,2018-12-31 17:07:22 UTC

@@ -5,5 +5,6 @@
 	<% end %>
   <h5 class="text-center"><%= @post.created_at.strftime('%b %d, %Y') %></h5>
   <div><%= @post.discription.html_safe %></div>
+  <%= link_to "Edit", edit_post_path, class: "btn btn-raised btn-secondary" %>
   <%= link_to "Back", posts_path, class: "btn btn-raised btn-secondary" %>
 </div>

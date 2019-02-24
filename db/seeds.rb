@@ -12,6 +12,7 @@ User.create(email: 'masashi.sanematsu@persol.co.jp', password: 'admin334', usern
 User.create(email: 'h.kano@persol.co.jp', password: 'admin434', username: '鹿野 宏美', admin: false, phone: "0123456788", location: "So 10, Nguyen Trai, Quan 8", fullname: "Tran Minh Phuc")
 User.create(email: 'dai.omori@persol.co.jp', password: 'admin543', username: '大森 大', admin: false, phone: "0124578964", location: "So 20, Pham Huu Lau, Quan 9", fullname: "Tran Trung Tin")
 User.create(email: 'mio.kakai@persol.co.jp', password: 'admin634', username: '抱井 美緒', admin: false, phone: "0124578976", location: "So 30, Duong 3-2, Quan 10", fullname: "Tran Ngoc Phu")
+# a = User.new(email: 'mio2.kakaix@persol.co.jp', password: 'admin6342', username: '抱井1美緒2', fullname: "Tran Ngoc Phu") test
 
 Color.create(name: 'NAVY', code: '#001f3f;')
 Color.create(name: 'BLUE', code: '#0074D9;')

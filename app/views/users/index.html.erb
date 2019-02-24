@@ -90,7 +90,7 @@ h3 {
 					  Phone number: <%= current_user.phone %>
 					</div>
 					<div class="alert alert-info" role="alert">
-					  Location: <%= truncate(current_user.location, length: 70, omission: "...#{current_user.location[-5, 5]}") %>
+					  Location: <%= truncate(current_user.location, length: 70, omission: "...#{current_user.location[-5, 5]}") if current_user.location.present? %>
 					</div>
 					<p class="w3-center" style="">Count images: <%= current_user.posts.all.size %> </p>
           <div id="posts"></div>
@@ -99,22 +99,22 @@ h3 {
     <hr class="w3-opacity">
     <div class="w3-row-padding w3-padding-16 w3-center">
       <div class="card w3-quarter" style="height: 400px;">
-        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Sandwich" style="width:100%">
+        <img src="" alt="Sandwich" style="width:100%">
         <h3>The Perfect Sandwich, A Real</h3>
         <p class="card-footer text-muted">Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
       </div>
       <div class="card w3-quarter" style="height: 400px;">
-        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Steak" style="width:100%">
+        <img src="" alt="Steak" style="width:100%">
         <h3>Let Me Tell You About This Steak</h3>
         <p class="card-footer text-muted">Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
       </div>
       <div class="card w3-quarter" style="height: 400px;">
-        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Cherries" style="width:100%">
+        <img src="" alt="Cherries" style="width:100%">
         <h3>Cherries, interrupted</h3>
         <p class="card-footer text-muted">Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
       </div>
       <div class="card w3-quarter" style="height: 400px;">
-        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Pasta and Wine" style="width:100%">
+        <img src="" alt="Pasta and Wine" style="width:100%">
         <h3>Once Again, Robust Wine</h3>
         <p class="card-footer text-muted">Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
       </div>
@@ -123,22 +123,22 @@ h3 {
     <!-- Second Photo Grid-->
     <div class="w3-row-padding w3-padding-16 w3-center">
       <div class="card w3-quarter" style="height: 400px;">
-        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Popsicle" style="width:100%">
+        <img src="" alt="Popsicle" style="width:100%">
         <h3>All I Need Is a Popsicle</h3>
         <p class="card-footer text-muted">Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
       </div>
       <div class="card w3-quarter" style="height: 400px;">
-        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Salmon" style="width:100%">
+        <img src="" alt="Salmon" style="width:100%">
         <h3>Salmon For Your Skin</h3>
         <p class="card-footer text-muted">Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
       </div>
       <div class="card w3-quarter" style="height: 400px;">
-        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Sandwich" style="width:100%">
+        <img src="" alt="Sandwich" style="width:100%">
         <h3>The Perfect Sandwich</h3>
         <p class="card-footer text-muted">Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
       </div>
       <div class="card w3-quarter" style="height: 400px;">
-        <img src="https://s3-us-west-2.amazonaws.com/amazon-service-demo/photo-1521185496955-15097b20c5fe.jpeg" alt="Croissant" style="width:100%">
+        <img src="" alt="Croissant" style="width:100%">
         <h3>Le French the fraces</h3>
         <p class="card-footer text-muted">Lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
       </div>

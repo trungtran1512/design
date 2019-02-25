@@ -3,6 +3,7 @@ lock "3.11.0"
 
 set :application, "design"
 set :repo_url, "git@github.com:trungpro152224/design.git"
+set :branch, :develop
 set :deploy_to, '/deploy/apps/design'
 set :pty, true
 set :linked_files, %w(config/database.yml config/application.yml)
@@ -24,3 +25,16 @@ set :puma_workers, 0
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true
 set :puma_preload_app, false
+
+namespace :deploy do
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
+    end
+  end
+
+end

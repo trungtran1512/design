@@ -21,7 +21,6 @@ require 'capistrano/bundler'
 require 'capistrano/rails/migrations'
 require 'capistrano/rails/assets'
 require 'capistrano/puma'
-require "capistrano/rails/migrations"
 install_plugin Capistrano::Puma
 install_plugin Capistrano::Puma::Nginx
 # require "capistrano/passenger"

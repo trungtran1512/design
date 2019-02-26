@@ -129,12 +129,31 @@ h3 {
     <hr class="w3-opacity">
     <div class="w3-row-padding w3-padding-16 w3-center">
       <% @post.each do |post| %>
-        <div class="w3-quarter">
-          <% if post.image? %>
-            <%= image_tag post.image.url, style: "width:100%;" %>
-          <% end %>
-          <h3><%= post.title %></h3>
-          <p class="w3-center"><%= post.discription %></p>
+        <div class="w3-third">
+          <div class="wrapper">
+            <% if post.image? %>
+            <div class="date">
+              <span class="day">12</span>
+              <span class="month">Aug</span>
+              <span class="year">2016</span>
+            </div>
+              <%= image_tag post.image.url, style: "width:100%;", class: "img" %>
+            <% end %>
+            <div class="data">
+              <div class="content">
+                <span class="author">Jane Doe</span>
+                <h3 class="title"><%= truncate(post.title, length: 20, omission: "...#{post.title[-5, 5]}") if post.title.present? %></h3>
+                <p class="w3-center text"><%= truncate(post.discription, length: 30, omission: "...#{post.discription[-5, 5]}") if post.discription.present? %></p>
+                <label for="show-menu" class="menu-button"><span></span></label>
+                </div>
+              <input type="checkbox" id="show-menu" />
+              <ul class="menu-content">
+                <li><a href="#" class="fa fa-facebook-official"><span></span></a></li>
+                <li><a href="#" class="fa fa-instagram"><span>47 comments</span></a></li>
+                <li><a href="#" class="fa fa-comment-o"><span>8 likes</span></a></li>
+              </ul>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
@@ -230,9 +249,9 @@ h3 {
         </div>
       </div>
     </footer>
-     <div class="w3-black w3-center w3-padding-24">
-        <a href="#" class="w3-button w3-light-grey" style="border-radius: 40px;"><i class="material-icons">pets</i></a>
+    <div class="w3-black w3-center w3-padding-24">
+      <a href="#" class="w3-button w3-light-grey" style="border-radius: 40px;"><i class="material-icons">pets</i></a>
         <br>
-      Powered by: <a href="#" title="W3.CSS" target="_blank" class="w3-hover-opacity">trungpro151224@gmail.com</a></div>
+    Powered by: <a href="#" title="W3.CSS" target="_blank" class="w3-hover-opacity">trungpro151224@gmail.com</a></div>
   </body>
 </html>

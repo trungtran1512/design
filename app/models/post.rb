@@ -4,7 +4,7 @@ class Post < ApplicationRecord
 
   validates :user_id, numericality: { only_integer: true }, allow_nil: true
 
-  validates :title, presence: true, length: { in: 2..50 }
+  validates :title, presence: true, length: { in: 2..50, message: "Invite to re-enter the title in lengths from 2 to 50 characters" }
 
   validates :discription, presence: true
 end

@@ -1,0 +1,7 @@
+
+<div class="form-control" style="text-align: center;" id="search-form">
+	<%= form_for :q, url: search_path, method: :get do |f| %>
+	    <%= text_field_tag :q, params[:q], class: "dfd" %>
+	    <%= submit_tag "Search", name: nil %>
+	<% end %>
+</div>

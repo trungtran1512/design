@@ -1,5 +1,11 @@
+require 'elasticsearch/model'
+
 class Post < ApplicationRecord
   belongs_to :user, optional: true
+
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   mount_uploader :image, ImageUploader
 
   validates :user_id, numericality: { only_integer: true }, allow_nil: true

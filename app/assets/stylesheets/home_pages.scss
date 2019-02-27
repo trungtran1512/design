@@ -312,7 +312,6 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #fff;
     min-height: 540px;
     position: relative;
-    overflow: hidden;
     box-shadow: 0 19px 38px rgba(#000, 0.3), 0 15px 12px rgba(#000, 0.2);
     &:hover {
       .data {
@@ -446,6 +445,7 @@ h1, h2, h3, h4, h5, h6 {
   input[type='checkbox'] {
     display: none;
   }
+
   input[type='checkbox']:checked + .menu-content {
     transform: translateY(-60px);
   }
@@ -470,12 +470,12 @@ h1, h2, h3, h4, h5, h6 {
       display: inline-block;
     }
     a {
+      text-decoration: none;
       color: #fff;
     }
     span {
       position: absolute;
       left: 50%;
-      top: 0;
       font-size: 10px;
       font-weight: 700;
       transform: translate(-50%, 0);

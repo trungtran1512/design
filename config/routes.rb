@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :posts
 
   resources :colors
+  get "search", to: "search#search"
 end

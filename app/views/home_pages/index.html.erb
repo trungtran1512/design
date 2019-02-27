@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <%= javascript_include_tag "home_pages.js" %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 body { font-family: "Times New Roman", Georgia, Serif; }
 h1, h2, h4, h5, h6 {
@@ -127,6 +128,7 @@ h3 {
       </div>
 
     <hr class="w3-opacity">
+    <%= render 'search/form' %>
     <div class="w3-row-padding w3-padding-16 w3-center">
       <% @post.each do |post| %>
         <div class="w3-third">
@@ -148,9 +150,9 @@ h3 {
                 </div>
               <input type="checkbox" id="show-menu" />
               <ul class="menu-content">
-                <li><a href="#" class="fa fa-facebook-official"><span></span></a></li>
-                <li><a href="#" class="fa fa-instagram"><span>47 comments</span></a></li>
-                <li><a href="#" class="fa fa-comment-o"><span>8 likes</span></a></li>
+                <li><a href="#" class="fa fa-facebook-official"><span>5</span></a></li>
+                <li><a href="#" class="fa fa-instagram"><span>47</span></a></li>
+                <li><a href="#" class="fa fa-comment-o"><span>8</span></a></li>
               </ul>
             </div>
           </div>
@@ -250,8 +252,15 @@ h3 {
       </div>
     </footer>
     <div class="w3-black w3-center w3-padding-24">
-      <a href="#" class="w3-button w3-light-grey" style="border-radius: 40px;"><i class="material-icons">pets</i></a>
+      <a href="#" class="w3-button w3-light-grey" style="border-radius: 40px;"><i class="fa fa-home"></i></a>
         <br>
-    Powered by: <a href="#" title="W3.CSS" target="_blank" class="w3-hover-opacity">trungpro151224@gmail.com</a></div>
+        <h4>Follow Us</h4>
+        <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Facebook"><i class="fa fa-facebook"></i></a>
+        <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Twitter"><i class="fa fa-twitter"></i></a>
+        <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-google-plus"></i></a>
+        <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-instagram"></i></a>
+        <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+      <p style="text-align: center; margin-top: 5px;">Powered by: <a href="#" title="W3.CSS" target="_blank" class="w3-hover-opacity">trungpro151224@gmail.com</a></p>
+    </div>
   </body>
 </html>

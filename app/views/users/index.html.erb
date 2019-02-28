@@ -2,6 +2,7 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 body { font-family: "Times New Roman", Georgia, Serif; }
 h1, h2, h4, h5, h6 {
@@ -92,69 +93,40 @@ h3 {
 					<div class="alert alert-info" role="alert">
 					  Location: <%= truncate(current_user.location, length: 70, omission: "...#{current_user.location[-5, 5]}") if current_user.location.present? %>
 					</div>
-					<p class="w3-center" style="">Count images: <%= current_user.posts.all.size %> </p>
+					<p class="w3-center" style="font-weight: bold;">The total number of posts is: <%= current_user.posts.all.size %> </p>
           <div id="posts"></div>
         </div>
       </div>
     <hr class="w3-opacity">
     <div class="w3-row-padding w3-padding-16 w3-center">
-      <div class="card w3-quarter" style="height: 400px;">
-        <img src="" alt="Sandwich" style="width:100%">
-        <h3>The Perfect Sandwich, A Real</h3>
-        <p class="card-footer text-muted">Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="card w3-quarter" style="height: 400px;">
-        <img src="" alt="Steak" style="width:100%">
-        <h3>Let Me Tell You About This Steak</h3>
-        <p class="card-footer text-muted">Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="card w3-quarter" style="height: 400px;">
-        <img src="" alt="Cherries" style="width:100%">
-        <h3>Cherries, interrupted</h3>
-        <p class="card-footer text-muted">Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="card w3-quarter" style="height: 400px;">
-        <img src="" alt="Pasta and Wine" style="width:100%">
-        <h3>Once Again, Robust Wine</h3>
-        <p class="card-footer text-muted">Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
+      <% current_user.posts.each do |post| %>
+        <div class="w3-third">
+          <div class="wrapper">
+            <% if post.image? %>
+            <div class="date">
+              <span class="day">12</span>
+              <span class="month">Aug</span>
+              <span class="year">2016</span>
+            </div>
+              <%= link_to image_tag(post.image.url, style: "width:100%;", class: "img"),posts_path %>
+            <% end %>
+            <div class="data">
+              <div class="content">
+                <span class="author"><%= post.user.username if post.user.present? %></span>
+                <h3 class="title"><%= truncate(post.title, length: 20, omission: "...#{post.title[-5, 5]}") if post.title.present? %></h3>
+                <p class="w3-center text"><%= truncate(post.discription, length: 30, omission: "...#{post.discription[-5, 5]}") if post.discription.present? %></p>
+                <label for="show-menu" class="menu-button"><span></span></label>
+                </div>
+              <input type="checkbox" id="show-menu" />
+              <ul class="menu-content">
+                <li><a href="#" class="fa fa-facebook-official"><span>5</span></a></li>
+                <li><a href="#" class="fa fa-instagram"><span>47</span></a></li>
+                <li><a href="#" class="fa fa-comment-o"><span>8</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
-
-    <!-- Second Photo Grid-->
-    <div class="w3-row-padding w3-padding-16 w3-center">
-      <div class="card w3-quarter" style="height: 400px;">
-        <img src="" alt="Popsicle" style="width:100%">
-        <h3>All I Need Is a Popsicle</h3>
-        <p class="card-footer text-muted">Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="card w3-quarter" style="height: 400px;">
-        <img src="" alt="Salmon" style="width:100%">
-        <h3>Salmon For Your Skin</h3>
-        <p class="card-footer text-muted">Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="card w3-quarter" style="height: 400px;">
-        <img src="" alt="Sandwich" style="width:100%">
-        <h3>The Perfect Sandwich</h3>
-        <p class="card-footer text-muted">Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-      <div class="card w3-quarter" style="height: 400px;">
-        <img src="" alt="Croissant" style="width:100%">
-        <h3>Le French the fraces</h3>
-        <p class="card-footer text-muted">Lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
-      </div>
-    </div>
-
-    <!-- Pagination -->
-    <div class="w3-center w3-padding-32">
-      <div class="w3-bar">
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
-        <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
-        <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
-      </div>
-    </div>
-
   </body>
 </html>

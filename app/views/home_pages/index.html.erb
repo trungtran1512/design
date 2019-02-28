@@ -43,9 +43,6 @@ h3 {
               <%= link_to "Submit a photo", new_post_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Photo by me", posts_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
               <a href="#posts" class="nav-link"> Colections </a>
             </li>
             <li class="nav-item">
@@ -128,9 +125,9 @@ h3 {
       </div>
 
     <hr class="w3-opacity">
-    <%= render 'search/form' %>
+    <%= render 'search' %>
     <div class="w3-row-padding w3-padding-16 w3-center">
-      <% @post.each do |post| %>
+      <% @posts.each do |post| %>
         <div class="w3-third">
           <div class="wrapper">
             <% if post.image? %>
@@ -143,7 +140,7 @@ h3 {
             <% end %>
             <div class="data">
               <div class="content">
-                <span class="author">Jane Doe</span>
+                <span class="author"><%= post.user.username if post.user.present? %></span>
                 <h3 class="title"><%= truncate(post.title, length: 20, omission: "...#{post.title[-5, 5]}") if post.title.present? %></h3>
                 <p class="w3-center text"><%= truncate(post.discription, length: 30, omission: "...#{post.discription[-5, 5]}") if post.discription.present? %></p>
                 <label for="show-menu" class="menu-button"><span></span></label>

@@ -1,10 +1,7 @@
-require 'elasticsearch/model'
-
 class Post < ApplicationRecord
   belongs_to :user, optional: true
 
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+  scope :sort_time, -> { order('created_at desc') }
 
   mount_uploader :image, ImageUploader
 

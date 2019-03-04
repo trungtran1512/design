@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     if user_signed_in?
-      @user = current_user
+      @user_posts = current_user.posts.sort_time.page(params[:page]).per(9)
     else
       redirect_to new_user_session_path
     end

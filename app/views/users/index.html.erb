@@ -99,7 +99,7 @@ h3 {
       </div>
     <hr class="w3-opacity">
     <div class="w3-row-padding w3-padding-16 w3-center">
-      <% current_user.posts.each do |post| %>
+      <% @user_posts.each do |post| %>
         <div class="w3-third">
           <div class="wrapper">
             <% if post.image? %>
@@ -127,6 +127,11 @@ h3 {
           </div>
         </div>
       <% end %>
+    </div>
+    <div class="w3-center w3-padding-32">
+      <div class="w3-bar">
+        <%= paginate @user_posts %>
+      </div>
     </div>
   </body>
 </html>

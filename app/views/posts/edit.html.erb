@@ -71,6 +71,11 @@ h3 {
               <% end %>
 
               <div class="form-group">
+                <label for="Published" class="bmd-label-floating"></label>
+                <%= f.input :published, as: :radio_buttons %>
+              </div>
+
+              <div class="form-group">
                 <label for="Image" class="bmd-label-floating"></label>
                 <%= f.input :image, as: :file, label: 'Upload Image' %>
               </div>

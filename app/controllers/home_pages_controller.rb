@@ -5,9 +5,12 @@ class HomePagesController < ApplicationController
     @users = User.all
     @q = Post.ransack(params[:q])
     if @query.present?
-      @posts = @q.result(distinct: true).sort_time
+      @posts = @q.result(distinct: true).published.sort_time.page(params[:page]).per(12)
     else
-      @posts = Post.all.sort_time
+      @posts = Post.published.sort_time.page(params[:page]).per(12)
     end
+  end
+
+  def show
   end
 end

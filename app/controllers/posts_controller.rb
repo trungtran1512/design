@@ -3,7 +3,12 @@ class PostsController < ApplicationController
 	before_action :find_post, only: [:edit, :update, :show, :delete]
 
   def index
-    @posts = Post.all.order("created_at DESC")
+    @q = Post.ransack(params[:q])
+    if @q.present?
+      @posts = @q.result(distinct: true).published.sort_time.page(params[:page]).per(12)
+    else
+      @posts = Post.published.sort_time.page(params[:page]).per(12)
+    end
   end
 
   def new
@@ -50,7 +55,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-  	params.require(:post).permit(:title, :discription, :image)
+  	params.require(:post).permit(:title, :discription, :image, :published)
   end
 
   def find_post

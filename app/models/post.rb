@@ -3,6 +3,8 @@ class Post < ApplicationRecord
 
   scope :sort_time, -> { order('created_at desc') }
 
+  scope :published, -> { where(published: true) }
+
   mount_uploader :image, ImageUploader
 
   validates :user_id, numericality: { only_integer: true }, allow_nil: true

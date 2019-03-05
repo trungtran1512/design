@@ -67,16 +67,18 @@ h3 {
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-centered">
           <div class="carousel-item active">
-            <%= image_tag("01.jpg", alt: "First slide", class: "d-block w-100") %>
+            <%= image_tag("", alt: "", class: "d-block w-100", style: "background: linear-gradient(to bottom left, #00ffcc 0%, #cc0066 100%);") %>
               <div class="carousel-caption mx-auto">
                 <h1 class="text-uppercase" style="font-family: cursive;">
                   <strong class="animation1"> Design </strong>
                 </h1>
                 <p style="text-align: center; opacity: 0.8;" class="animation2">Beautiful, free photos <br> Gifted by the world’s most generous community of photographers. 🎁</p>
                 <br>
-                <button type="button" class="btn btn-outline-secondary" id="outline-danger">Find out more</button>
+                <a href="#color">
+                  <button type="button" class="btn btn-outline-secondary" id="outline-danger">Color for design</button>
+                </a>
                 <br>
-                <hr>
+                <hr id="color">
                 <span class="badge badge-pill badge-info">Design by: Trung Tran</span>
             </div>
           </div>
@@ -85,7 +87,7 @@ h3 {
     </main>
 
     <!-- color -->
-    <div class="color" style="padding-top: 20px;">
+    <div style="padding-top: 20px;">
       <div class="col-lg-6 mx-auto text-center">
         <br>
         <h1>The New Defaults</h1>
@@ -96,11 +98,15 @@ h3 {
         </div>
         <br>
         <div class="menu_color">
-          <div class="card" style="width: 18rem; display: contents;">
+          <div class="w3-row-padding w3-padding-16 w3-center">
             <% @colors.each do |color| %>
-              <div class="card-body" style="background: <%= color.code %> color: #fff;" id="card-body">
-                <h5 class="card-title"><%= color.name %></h5>
-                <p class="card-text" style="text-align: center;"><%= color.code.first(7).upcase %></p>
+              <div class="w3-third" style="margin-bottom: 5px;">
+                <div style="width: 18rem; display: contents;">
+                  <div class="card-body" style="background: <%= color.code %> color: #fff;" id="card-body">
+                    <h5 class="card-title"><%= color.name %></h5>
+                    <p class="card-text" style="text-align: center;"><%= color.code.first(7).upcase %></p>
+                  </div>
+                </div>
               </div>
             <% end %>
           </div>
@@ -136,10 +142,7 @@ h3 {
               <span class="month"><%= Date::MONTHNAMES[post.created_at.month][0..2] %></span>
               <span class="year"><%= post.created_at.year %></span>
             </div>
-            <a href="<%= url_for(action: :show, id: post.id) %>" data-toggle="modal" data-target="#show-detail-post" >
-              <%= image_tag post.image.url, style: "width:100%;", class: "img" %>
-            </a>
-              <%= render 'detailpost' %>
+            <%= link_to image_tag(post.image_url, alt: post.title, style: "width:100%;", class: "img"), { controller: 'posts', action: 'show', id: post } %>
             <% end %>
             <div class="data">
               <div class="content">

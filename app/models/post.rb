@@ -11,5 +11,5 @@ class Post < ApplicationRecord
 
   validates :title, presence: true, length: { in: 2..50, message: "Invite to re-enter the title in lengths from 2 to 50 characters" }
 
-  validates :discription, presence: true
+  validates :discription, presence: true, length: { maximum: 255, message: "Invite to re-enter the description in lengths maximum 255 characters" }
 end

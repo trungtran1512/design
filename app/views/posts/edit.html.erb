@@ -67,7 +67,7 @@ h3 {
           <div class="card-body px-lg-5 pt-0">
             <form class="text-center" style="color: #757575;">
               <% if @post.errors.present? %>
-                <br><%= content_tag :div, @post.errors.full_messages, class: "alert alert-danger", style: "text-align: center;" %>
+                <br><%= content_tag :div, @post.errors.full_messages.join('<br>').html_safe, class: "alert alert-danger", style: "text-align: center;" %>
               <% end %>
 
               <div class="form-group">

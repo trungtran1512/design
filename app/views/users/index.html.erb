@@ -61,9 +61,9 @@ h3 {
     <div class="w3-content" style="max-width:1100px">
       <div class="w3-row w3-padding-64" id="profile" style="border-radius: 100%;">
         <div class="w3-col m6 w3-padding-large">
-        	<br><br>
+        	<br>
           <% if current_user.avatar? %>
-            <%= image_tag current_user.avatar.url, class: "w3-round w3-image w3-min", style: "height:500px; width:500px; border-radius: 100%;" %>
+            <%= image_tag current_user.avatar.url, id: "avatar-user", class: "w3-round w3-image w3-min", style: "height:600px; width:500px; border-radius: 100%;" %>
             <% end %>
         </div>
 
@@ -108,7 +108,7 @@ h3 {
               <span class="month"><%= Date::MONTHNAMES[post.created_at.month][0..2] %></span>
               <span class="year"><%= post.created_at.year %></span>
             </div>
-              <%= link_to image_tag(post.image.url, style: "width:100%;", class: "img"),posts_path %>
+              <%= link_to image_tag(post.image_url, alt: post.title, style: "width:100%;", border: 1, class: "img"), { controller: 'posts', action: 'show', id: post } %>
             <% end %>
             <div class="data">
               <div class="content">

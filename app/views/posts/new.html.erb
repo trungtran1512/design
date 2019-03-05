@@ -61,7 +61,8 @@ h3 {
           <div class="card-body px-lg-5 pt-0">
             <form class="text-center" style="color: #757575;">
               <% if @post.errors.present? %>
-                <br><%= content_tag :div, @post.errors.full_messages, class: "alert alert-danger", style: "text-align: center;" %>
+              <% byebug %>
+                <br><%= content_tag :div, @post.errors.full_messages.join('<br>').html_safe, class: "alert alert-danger", style: "text-align: center;" %>
               <% end %>
 
               <div class="form-group">
@@ -82,7 +83,7 @@ h3 {
 
               <div class="form-group">
                 <label for="Description" class="bmd-label-floating">Description</label>
-                <%= f.input :discription, label: false, required: true, autocomplete: "username", input_html: { class: "form-control" } %>
+                <%= f.input :discription, label: false, required: true, autocomplete: "discription", input_html: { class: "form-control" } %>
                 <span class="bmd-help">We'll never share your description with anyone else.</span>
               </div>
 

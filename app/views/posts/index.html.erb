@@ -56,28 +56,44 @@ h3 {
       </div>
     </nav>
     <br>
-
-  <div class="container">
-  <div class="col-sm-10 col-sm-offset-1 col-xs-12 blog-content">
-    <% @posts.each do |post| %>
-    <div class="col-xs-12">
-      <div class="text-center">
-        <h2><%= post.title %></h2>
-        <h6><%= post.created_at.strftime('%b %d, %Y') %></h6>
+    <div class="w3-row-padding w3-padding-64 w3-center">
+      <hr class="w3-opacity">
+      <%= render 'home_pages/search' %>
+      <div class="w3-row-padding w3-padding-16 w3-center">
+        <% if @posts.present? %>
+          <% @posts.each do |post| %>
+            <div class="w3-third">
+              <div class="wrapper">
+                <% if post.image? %>
+                <div class="date">
+                  <span class="day"><%= post.created_at.day %></span>
+                  <span class="month"><%= Date::MONTHNAMES[post.created_at.month][0..2] %></span>
+                  <span class="year"><%= post.created_at.year %></span>
+                </div>
+                <%= link_to image_tag(post.image_url, alt: post.title, style: "width:100%;", class: "img"), { controller: 'posts', action: 'show', id: post } %>
+                <% end %>
+                <div class="data">
+                  <div class="content">
+                    <span class="author"><%= post.user.username if post.user.present? %></span>
+                    <h3 class="title"><%= truncate(post.title, length: 20, omission: "...#{post.title[-5, 5]}") if post.title.present? %></h3>
+                    <p class="w3-center text"><%= truncate(post.discription, length: 30, omission: "...#{post.discription[-5, 5]}") if post.discription.present? %></p>
+                    <label for="show-menu" class="menu-button"><span></span></label>
+                    </div>
+                  <input type="checkbox" id="show-menu" />
+                  <ul class="menu-content">
+                    <li><a href="#" class="fa fa-facebook-official"><span>5</span></a></li>
+                    <li><a href="#" class="fa fa-instagram"><span>47</span></a></li>
+                    <li><a href="#" class="fa fa-comment-o"><span>8</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <h1>No matching results</h1>
+          <%= image_tag("no-results.gif", alt: "no-results") %>
+        <% end %>
       </div>
-
-      <div>
-        <%= raw(post.discription).truncate(358) %>
-      </div>
-
-      <div class="text-center">
-        <%= link_to "READ MORE", post_path(post) %>
-        <%= link_to "logout", destroy_user_session_path, method: :delete %>
-      </div>
-      <br>
     </div>
-    <% end %>
-  </div>
-</div>
   </body>
 </html>

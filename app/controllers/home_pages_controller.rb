@@ -10,7 +10,4 @@ class HomePagesController < ApplicationController
       @posts = Post.published.sort_time.page(params[:page]).per(12)
     end
   end
-
-  def show
-  end
 end

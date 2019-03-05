@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show, :index]
 	before_action :find_post, only: [:edit, :update, :show, :delete]
+  before_action :post_owner, only: [:edit, :update, :destroy]
 
   def index
     @q = Post.ransack(params[:q])
@@ -46,10 +47,18 @@ class PostsController < ApplicationController
   def destroy
   	if @post.destroy
   		flash[:notice] = "Successfully deleted post!"
-  		redirect_to posts_path
+  		redirect_to users_path
   	else
   		flash[:alert] = "Error deleting post!"
   	end
+  end
+
+  def post_owner
+    @post = Post.find_by_id(params[:id])
+    unless @post.user_id == current_user.id
+      flash[:notice] = 'Access denied as you are not owner of this Post'
+      redirect_to root_path
+    end
   end
 
   private

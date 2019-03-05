@@ -25,6 +25,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'lograge'
 gem 'ransack'
 gem 'kaminari'
+gem 'social-share-button'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

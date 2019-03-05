@@ -1,10 +1,78 @@
-<div class="col-sm-11 col-xs-12 blog-content">
-  <h2 class="text-center"><%= @post.title %></h2>
-	<% if @post.image? %>
-	<%= image_tag @post.image.url, class: "w3-round w3-image w3-min", style: "height:500px; width:500px; border-radius: 100%;" %>
-	<% end %>
-  <h5 class="text-center"><%= @post.created_at.strftime('%b %d, %Y') %></h5>
-  <div><%= @post.discription.html_safe %></div>
-  <%= link_to "Edit", edit_post_path, class: "btn btn-raised btn-secondary" %>
-  <%= link_to "Back", posts_path, class: "btn btn-raised btn-secondary" %>
-</div>
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body { font-family: "Times New Roman", Georgia, Serif; }
+h1, h2, h4, h5, h6 {
+  font-family: "Playfair Display";
+  letter-spacing: 3px;
+}
+h3 {
+  letter-spacing: 2px;
+}
+</style>
+<head>
+</head>
+  <body>
+    <!-- header -->
+    <nav class="navbar navbar-expand-lg navbar-light" id="navbar_user">
+      <div class="container">
+        <div class="logo-item">
+          <%= image_tag("l.png", alt: "logo_design", style: "height: 60px;") %>
+        </div>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <%= content_tag(:i, "blur_on", class: "material-icons", style: "color: white;") %>
+      </button>
+      <div class="collapse navbar-collapse nav-collapse" id="navbarNavDropdown">
+        <div class="main-container">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <%= link_to "Home", root_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "Submit a photo", new_post_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <% if user_signed_in? %>
+              <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "nav-link") %>
+              <% else %>
+                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+                <% end %>
+            </li>
+            <li class="nav-item" id="btn-join">
+              <% if !user_signed_in? %>
+                <%= link_to "Join Free", new_user_registration_path, class: "nav-link" %>
+              <% else %>
+                <%= link_to "#{current_user.username}", users_path, class: "nav-link" %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <br>
+    <div class="w3-row-padding w3-padding-64 w3-center">
+			<div class="">
+			  <h1 class="text-center"><%= @post.title %></h1>
+				<% if @post.image? %>
+				<%= image_tag @post.image.url, class: "w3-round w3-image" %>
+				<% end %>
+				<div class="col-md-6 offset-md-3">
+					<br>
+					<span style="margin-top: 10px;"> Created by: <%= @post.user.username if @post.user.present? %></span>
+				  <h6 class="text-center"><%= @post.created_at.strftime('%b %d, %Y') %></h6>
+				  <h5 style="margin-bottom: 20px;"> <%= @post.discription.html_safe %> </h5>
+				  <%= social_share_button_tag(@post.title) %>
+				  <br>
+				  <% if user_signed_in? && (current_user.id == @post.user_id) %>
+				  	<%= link_to "Edit", edit_post_path, class: "btn btn-outline-primary" %>
+				  	<%= link_to 'Destroy',  { action: :destroy, id: @post.id }, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>
+				  <% end %>
+				  <%= link_to "#Home", root_path, class: "btn btn-outline-dark" %>
+				</div>
+			</div>
+		</div>
+  </body>
+</html>

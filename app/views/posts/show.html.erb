@@ -54,25 +54,27 @@ h3 {
     </nav>
     <br>
     <div class="w3-row-padding w3-padding-64 w3-center">
-			<div class="">
-			  <h1 class="text-center"><%= @post.title %></h1>
-				<% if @post.image? %>
-				<%= image_tag @post.image.url, class: "w3-round w3-image" %>
-				<% end %>
-				<div class="col-md-6 offset-md-3">
-					<br>
-					<span style="margin-top: 10px;"> Created by: <%= @post.user.username if @post.user.present? %></span>
-				  <h6 class="text-center"><%= @post.created_at.strftime('%b %d, %Y') %></h6>
-				  <h5 style="margin-bottom: 20px;"> <%= @post.discription.html_safe %> </h5>
-				  <%= social_share_button_tag(@post.title) %>
-				  <br>
-				  <% if user_signed_in? && (current_user.id == @post.user_id) %>
-				  	<%= link_to "Edit", edit_post_path, class: "btn btn-outline-primary" %>
-				  	<%= link_to 'Destroy',  { action: :destroy, id: @post.id }, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>
-				  <% end %>
-				  <%= link_to "#Home", root_path, class: "btn btn-outline-dark" %>
-				</div>
-			</div>
-		</div>
+      <div class="">
+        <h1 class="text-center"><%= @post.title %></h1>
+        <% if @post.image? %>
+          <%= image_tag @post.image.url, class: "w3-round w3-image" %>
+        <% else %>
+          <%= image_tag("no-image.jpg") %>
+        <% end %>
+        <div class="col-md-6 offset-md-3">
+          <br>
+          <span style="margin-top: 10px;"> Created by: <%= @post.user.username if @post.user.present? %></span>
+          <h6 class="text-center"><%= @post.created_at.strftime('%b %d, %Y') %></h6>
+          <h5 style="margin-bottom: 20px;"> <%= @post.discription.html_safe %> </h5>
+          <%= social_share_button_tag(@post.title) %>
+          <br>
+          <% if user_signed_in? && (current_user.id == @post.user_id) %>
+            <%= link_to "Edit", edit_post_path, class: "btn btn-outline-primary" %>
+            <%= link_to 'Destroy',  { action: :destroy, id: @post.id }, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %>
+          <% end %>
+          <%= link_to "#Home", root_path, class: "btn btn-outline-dark" %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

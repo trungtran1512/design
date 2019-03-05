@@ -7,7 +7,7 @@
 body { font-family: "Times New Roman", Georgia, Serif; }
 h1, h2, h4, h5, h6 {
   font-family: "Playfair Display";
-  letter-spacing: 5px;
+  letter-spacing: 3px;
 }
 h3 {
   letter-spacing: 2px;
@@ -61,10 +61,13 @@ h3 {
     <div class="w3-content" style="max-width:1100px">
       <div class="w3-row w3-padding-64" id="profile" style="border-radius: 100%;">
         <div class="w3-col m6 w3-padding-large">
-        	<br>
+        	<br><br>
           <% if current_user.avatar? %>
-            <%= image_tag current_user.avatar.url, id: "avatar-user", class: "w3-round w3-image w3-min", style: "height:600px; width:500px; border-radius: 100%;" %>
-            <% end %>
+            <%= image_tag current_user.avatar.url, id: "avatar-user", class: "w3-round w3-image w3-min", style: "height:500px; width:500px; border-radius: 100%;" %>
+          <% else %>
+            <%= image_tag "no-avatar.gif", id: "avatar-user", class: " w3-image w3-min" %>
+            <h6 class="w3-center">Without an avatar to display<br>Please select the edit profile button</h6>
+          <% end %>
         </div>
 
         <div class="w3-col m6 w3-padding-large">
@@ -109,6 +112,8 @@ h3 {
               <span class="year"><%= post.created_at.year %></span>
             </div>
               <%= link_to image_tag(post.image_url, alt: post.title, style: "width:100%;", border: 1, class: "img"), { controller: 'posts', action: 'show', id: post } %>
+            <% else %>
+            <%= link_to image_tag('no-image.jpg', alt: post.title, style: "width:100%;", class: "img"), { controller: 'posts', action: 'show', id: post } %>
             <% end %>
             <div class="data">
               <div class="content">

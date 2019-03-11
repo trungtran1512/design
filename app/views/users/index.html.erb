@@ -61,9 +61,13 @@ h3 {
     <div class="w3-content" style="max-width:1100px">
       <div class="w3-row w3-padding-64" id="profile" style="border-radius: 100%;">
         <div class="w3-col m6 w3-padding-large">
-        	<br><br>
           <% if current_user.avatar? %>
             <%= image_tag current_user.avatar.url, id: "avatar-user", class: "w3-round w3-image w3-min", style: "height:500px; width:500px; border-radius: 100%;" %>
+              <% if current_user.admin == true %>
+              <div style="text-align: center; margin-top: 5%;">
+                <%= link_to 'Page Admin', rails_admin_path, class: "btn btn-outline-success" %>
+              </div>
+              <% end %>
           <% else %>
             <%= image_tag "no-avatar.gif", id: "avatar-user", class: " w3-image w3-min" %>
             <h6 class="w3-center">Without an avatar to display<br>Please select the edit profile button</h6>

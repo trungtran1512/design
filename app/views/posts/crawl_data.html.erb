@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body { font-family: "Times New Roman", Georgia, Serif; }
+h1, h2, h4, h5, h6 {
+  font-family: "Playfair Display";
+  letter-spacing: 3px;
+}
+h3 {
+  letter-spacing: 2px;
+}
+</style>
+<head>
+</head>
+  <body>
+    <!-- header -->
+    <%= render template: "layouts/_nav" %>
+    <div class="w3-content w3-row w3-padding-64" style="max-width:1100px;">
+      <div class="w3-row-padding w3-padding-16 w3-center">
+        <% @images.zip(@titles, @descriptions, @details).each do |img, title, des, det| %>
+          <article style="display: flex; margin-bottom: 5%;">
+            <%= link_to image_tag(img['src'], style: "width: 210px; height: 200px;") %>
+              <div style="text-align: left; margin-left: 5%;">
+                <h3 class="title">
+                  <%= h(title).gsub("\n", "<br>").html_safe %>
+                </h3>
+                <h5 class="description">
+                  <%= h(des).gsub("\n", "<br>").html_safe %>
+                </h5>
+                <p class="detail" style="font-style: italic;"><%= det %></p>
+              </div>
+          </article>
+        <% end %>
+      </div>
+      <div style="text-align: center;">
+        <%= link_to "Refresh", web_crawler_url, class: "btn btn-raised btn-danger" %>
+        <%= link_to "Back", users_path, class: "btn btn-raised btn-info" %>
+      </div>
+    </div>
+    <br>
+  </body>
+</html>

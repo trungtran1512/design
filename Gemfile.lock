@@ -120,12 +120,14 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    elevatezoom-rails (1.0.0)
     erubi (1.7.1)
     erubis (2.7.0)
     excon (0.62.0)
     execjs (2.7.0)
     faker (1.9.1)
       i18n (>= 0.7)
+    fastimage (2.1.5)
     ffi (1.9.25)
     fog-aws (3.3.0)
       fog-core (~> 2.1)
@@ -148,6 +150,7 @@ GEM
     formatador (0.2.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    guess_html_encoding (0.0.11)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
@@ -328,6 +331,9 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.4.0)
     ruby-progressbar (1.10.0)
+    ruby-readability (0.7.0)
+      guess_html_encoding (>= 0.0.4)
+      nokogiri (>= 1.6.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
     sass (3.6.0)
@@ -407,7 +413,9 @@ DEPENDENCIES
   carrierwave (~> 1.3, >= 1.3.1)
   chromedriver-helper
   devise (~> 4.5)
+  elevatezoom-rails
   faker (~> 1.9, >= 1.9.1)
+  fastimage
   fog-aws (~> 3.3)
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3, >= 4.3.3)
@@ -417,6 +425,7 @@ DEPENDENCIES
   meta_request
   mini_magick
   mysql2 (>= 0.4.4, < 0.6.0)
+  nokogiri
   popper_js (~> 1.9, >= 1.9.9)
   pry-rails
   puma (~> 3.11)
@@ -427,6 +436,7 @@ DEPENDENCIES
   ransack
   rspec-rails
   rubocop
+  ruby-readability
   sass-rails (~> 5.0)
   selenium-webdriver
   simple_form (~> 4.0, >= 4.0.1)

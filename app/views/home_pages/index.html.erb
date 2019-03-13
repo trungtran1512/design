@@ -135,14 +135,14 @@ h3 {
     <div class="w3-row-padding w3-padding-16 w3-center" data-aos="fade-up">
       <% @posts.each do |post| %>
         <div class="w3-third">
-          <div class="wrapper">
+          <div class="wrapper" data-aos="flip-up" data-aos-duration="1000">
             <% if post.image? %>
             <div class="date">
               <span class="day"><%= post.created_at.day %></span>
               <span class="month"><%= Date::MONTHNAMES[post.created_at.month][0..2] %></span>
               <span class="year"><%= post.created_at.year %></span>
             </div>
-            <%= link_to image_tag(post.image_url, alt: post.title, style: "width:100%;", class: "img"), { controller: 'posts', action: 'show', id: post } %>
+            <%= link_to image_tag(post.image_url, alt: post.title, style: "width:100%;", class: "img"), { controller: 'posts', action: 'show', id: post }, data_zoom_image: post.image.url %>
             <% else %>
             <%= link_to image_tag('no-image.jpg', alt: post.title, style: "width:100%;", class: "img"), { controller: 'posts', action: 'show', id: post } %>
             <% end %>
@@ -208,7 +208,7 @@ h3 {
     </div>
       <hr class="w3-opacity">
       <!-- Contact Section -->
-      <div class="card w3-container w3-padding-64" id="contact" data-aos="fade-left">
+      <div class="card w3-container w3-padding-64" id="contact" data-aos="fade-right" data-aos-duration="1500">
         <h1>Contact</h1><br>
         <p>We offer full-service catering for any event, large or small. We understand your needs and we will cater the food to satisfy the biggerst criteria of them all, both look and taste. Do not hesitate to contact us.</p>
         <p class="w3-text-blue-grey w3-large"><b>Catering Service, 42nd Living St, 43043 New York, NY</b></p>
@@ -271,5 +271,8 @@ h3 {
         <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
       <p style="text-align: center; margin-top: 5px;">Powered by: <a href="#" title="email: trungpro151224@gmail.com" target="_blank" class="w3-hover-opacity">trungpro151224@gmail.com</a></p>
     </div>
+    <script>
+      $('.img').elevateZoom();
+    </script>
   </body>
 </html>

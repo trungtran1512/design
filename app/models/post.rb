@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :user, optional: true
 
+  URL_DATA = "https://news.zing.vn"
+
   scope :sort_time, -> { order('created_at desc') }
 
   scope :published, -> { where(published: true) }

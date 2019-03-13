@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  require 'nokogiri'
+  require 'open-uri'
+  require 'readability'
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 

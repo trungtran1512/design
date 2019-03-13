@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :posts
 
+  get '/web_crawler', to: 'posts#crawl_data', as: 'web_crawler'
+
   resources :colors
-  get "search", to: "search#search"
 end

@@ -14,3 +14,4 @@
 //= require activestorage
 //= require jquery
 //= require social-share-button
+//= require jquery.elevatezoom

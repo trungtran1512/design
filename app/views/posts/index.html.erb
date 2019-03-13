@@ -16,45 +16,7 @@ h3 {
 </head>
   <body>
     <!-- header -->
-    <nav class="navbar navbar-expand-lg navbar-light" id="navbar_user">
-      <div class="container">
-        <div class="logo-item">
-          <%= image_tag("l.png", alt: "logo_design", style: "height: 60px;") %>
-        </div>
-      </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <%= content_tag(:i, "blur_on", class: "material-icons", style: "color: white;") %>
-      </button>
-      <div class="collapse navbar-collapse nav-collapse" id="navbarNavDropdown">
-        <div class="main-container">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <%= link_to "Home", root_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item active">
-              <%= link_to "Submit a photo", new_post_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <a href="#posts" class="nav-link">Photo by me</a>
-            </li>
-            <li class="nav-item">
-              <% if user_signed_in? %>
-              <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "nav-link") %>
-              <% else %>
-                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-                <% end %>
-            </li>
-            <li class="nav-item" id="btn-join">
-              <% if !user_signed_in? %>
-                <%= link_to "Join Free", new_user_registration_path, class: "nav-link" %>
-              <% else %>
-                <%= link_to "#{current_user.username}", users_path, class: "nav-link" %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <%= render template: "layouts/_nav" %>
     <br>
     <div class="w3-row-padding w3-padding-64 w3-center">
       <hr class="w3-opacity">

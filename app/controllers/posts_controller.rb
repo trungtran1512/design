@@ -53,6 +53,19 @@ class PostsController < ApplicationController
   	end
   end
 
+  def crawl_data
+    if current_user.admin == true
+      url = Post::URL_DATA
+      doc = Nokogiri::HTML(open(url))
+      @titles = doc.search('.article-title').map(&:text)[0..8]
+      @descriptions = doc.search('.article-summary').map(&:text)[0..8]
+      @details = doc.search('.article-meta').map(&:text)[0..8]
+      @images = doc.search('img')[0..8]
+    else
+      redirect_to users_path
+    end
+  end
+
   def post_owner
     @post = Post.find_by_id(params[:id])
     unless @post.user_id == current_user.id

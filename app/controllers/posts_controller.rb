@@ -57,12 +57,22 @@ class PostsController < ApplicationController
     if current_user.admin == true
       url = Post::URL_DATA
       doc = Nokogiri::HTML(open(url))
-      @titles = doc.search('.article-title').map(&:text)[0..8]
-      @descriptions = doc.search('.article-summary').map(&:text)[0..8]
-      @details = doc.search('.article-meta').map(&:text)[0..8]
-      @images = doc.search('img')[0..8]
+      @titles = doc.search('.article-title').map(&:text).first(8)
+      @descriptions = doc.search('.article-summary').map(&:text).first(8)
+      @details = doc.search('.article-meta').map(&:text).first(8)
+      @images = doc.search('img').first(8)
+      @urls = doc.search("article header a").map {|link| link['href']}.first(8)
     else
       redirect_to users_path
+    end
+  end
+
+  def detail_site
+    if params[:url].present?
+      site = Nokogiri::HTML(open("#{Post::URL_DATA}/#{params[:url]}"))
+      @x = site.search("header h1").text
+    else
+      redirect_to web_crawler_url
     end
   end
 

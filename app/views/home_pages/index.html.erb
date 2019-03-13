@@ -142,7 +142,7 @@ h3 {
               <span class="month"><%= Date::MONTHNAMES[post.created_at.month][0..2] %></span>
               <span class="year"><%= post.created_at.year %></span>
             </div>
-            <%= link_to image_tag(post.image_url, alt: post.title, style: "width:100%;", class: "img"), { controller: 'posts', action: 'show', id: post }, data_zoom_image: post.image.url %>
+            <%= link_to image_tag(post.image_url, alt: post.title, style: "width:100%;", class: "img"), { controller: 'posts', action: 'show', id: post } %>
             <% else %>
             <%= link_to image_tag('no-image.jpg', alt: post.title, style: "width:100%;", class: "img"), { controller: 'posts', action: 'show', id: post } %>
             <% end %>
@@ -271,8 +271,5 @@ h3 {
         <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
       <p style="text-align: center; margin-top: 5px;">Powered by: <a href="#" title="email: trungpro151224@gmail.com" target="_blank" class="w3-hover-opacity">trungpro151224@gmail.com</a></p>
     </div>
-    <script>
-      $('.img').elevateZoom();
-    </script>
   </body>
 </html>

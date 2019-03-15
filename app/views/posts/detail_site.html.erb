@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<head>
+</head>
+  <body>
+    <!-- header -->
+    <%= render template: "layouts/_nav" %>
+    <div class="w3-content w3-row w3-padding-64" style="max-width:1100px;">
+      <div class="row">
+        <div class="col-md-7 offset-md-3">
+          <%= h(@test).html_safe %>
+          <div class="w3-row-padding w3-padding-16 w3-center">
+            <div style="text-align: justify; text-align-last: center;">
+              <h1 style="font-weight: bold;"><%= h(@result[:header]).gsub("\n", "<br>").html_safe %></h1>
+              <p style="text-align: center; font-style: italic;">Time: <%= h(@result[:meta]).gsub("\n", "<br>").html_safe %></p>
+              <h3><%= h(@result[:title]).gsub("\n", "<br>").html_safe %></h3>
+              <% if @result[:img].present? %>
+                <%= h(image_tag(@result[:img])).gsub("\n", "<br>").html_safe %>
+              <% else %>
+                <%= image_tag("no-image.jpg") %>
+              <% end %>
+            </div>
+            <p style="text-align: justify;"><%= h(truncate(@result[:body], length: 300, omission: '... (continued)').gsub("\n", "<br>").html_safe) %></p>
+            <%= link_to "continued", "#{Post::URL_DATA}/#{params[:url]}", class: "btn btn-raised btn-danger" %>
+            <%= link_to "Back", web_crawler_url, class: "btn btn-raised btn-info" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </body>
+</html>

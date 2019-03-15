@@ -54,14 +54,14 @@ class PostsController < ApplicationController
   end
 
   def crawl_data
-    if current_user.admin == true
+    if current_user.admin?
       url = Post::URL_DATA
       doc = Nokogiri::HTML(open(url))
-      @titles = doc.search('.article-title').map(&:text).first(8)
-      @descriptions = doc.search('.article-summary').map(&:text).first(8)
-      @details = doc.search('.article-meta').map(&:text).first(8)
-      @images = doc.search('img').first(8)
-      @urls = doc.search("article header a").map {|link| link['href']}.first(8)
+      @titles = doc.search('.article-title').map(&:text).first(7)
+      @descriptions = doc.search('.article-summary').map(&:text).first(7)
+      @details = doc.search('.article-meta').map(&:text).first(7)
+      @images = doc.search('img').first(7)
+      @urls = doc.search("article .article-thumbnail a").map {|link| link['href']}.first(7)
     else
       redirect_to users_path
     end
@@ -70,7 +70,18 @@ class PostsController < ApplicationController
   def detail_site
     if params[:url].present?
       site = Nokogiri::HTML(open("#{Post::URL_DATA}/#{params[:url]}"))
-      @x = site.search("header h1").text
+      header = site.search(".the-article-header h1").text
+      meta = site.search(".the-article-meta li").text.first(16)
+      title = site.search(".the-article-summary").text
+      body = site.search(".the-article-body").text
+      img = site.search(".picture img").attr('src').value if site.search(".picture img").present?
+      @result = {
+        'header': header,
+        'meta': meta,
+        'title': title,
+        'body': body,
+        'img': img
+      }
     else
       redirect_to web_crawler_url
     end

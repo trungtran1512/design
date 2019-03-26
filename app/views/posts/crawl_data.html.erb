@@ -10,17 +10,17 @@
     <%= render template: "layouts/_nav" %>
     <div class="w3-content w3-row w3-padding-64" style="max-width:1100px;">
       <div class="w3-row-padding w3-padding-16 w3-center">
-        <% @images.zip(@titles, @descriptions, @details, @urls).each do |img, title, des, det, url| %>
+        <% @title_pages.zip(@arr_news, @creator_name).each do |tit_page, arr_new, creat_name| %>
           <article style="display: flex; margin-bottom: 5%;">
-            <%= link_to image_tag(img['src'], id: "crawl-img"), detail_site_url({ url: url }) %>
+            <%= link_to image_tag(arr_new[:image], id: "crawl-img") %>
               <div style="text-align: left; margin-left: 5%;">
                 <h3 class="title">
-                  <%= h(title).gsub("\n", "<br>").html_safe %>
+                  <%= tit_page %>
                 </h3>
                 <h5 class="description">
-                  <%= h(des).gsub("\n", "<br>").html_safe %>
+                  <%= truncate(arr_new[:description], length: 500, omission: '... (continued)') %>
                 </h5>
-                <p class="detail" style="font-style: italic;"><%= det %></p>
+                <p class="detail" style="font-style: italic;">Create By: <%= creat_name %></p>
               </div>
           </article>
         <% end %>

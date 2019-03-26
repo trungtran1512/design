@@ -30,6 +30,7 @@ gem 'social-share-button'
 gem 'elevatezoom-rails'
 gem 'ruby-readability'
 gem 'fastimage'
+gem 'link_thumbnailer'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

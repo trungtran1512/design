@@ -47,6 +47,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     airbrussh (1.3.0)
       sshkit (>= 1.6.1, != 1.7.0)
+    ansi (1.5.0)
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -112,6 +113,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.2)
     crass (1.0.4)
     devise (4.5.0)
       bcrypt (~> 3.0)
@@ -123,6 +125,8 @@ GEM
     elevatezoom-rails (1.0.0)
     erubi (1.7.1)
     erubis (2.7.0)
+    ethon (0.12.0)
+      ffi (>= 1.3.0)
     excon (0.62.0)
     execjs (2.7.0)
     faker (1.9.1)
@@ -156,8 +160,13 @@ GEM
       tilt
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
+    image_info (1.1.2)
+      image_size
+      typhoeus
+    image_size (2.0.0)
     io-like (0.3.0)
     ipaddress (0.8.3)
+    iso8601 (0.9.1)
     jaro_winkler (1.5.2)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -181,6 +190,14 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
+    link_thumbnailer (3.3.2)
+      activesupport (>= 3.0)
+      image_info (>= 1.0)
+      json (>= 1.7.7)
+      net-http-persistent (>= 2.9)
+      nokogiri (>= 1.6)
+      rake (>= 0.9)
+      video_info (>= 2.6)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -214,12 +231,18 @@ GEM
     multi_json (1.13.1)
     mysql2 (0.5.2)
     nested_form (0.3.2)
+    net-http-persistent (3.0.0)
+      connection_pool (~> 2.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (5.0.2)
+    net_http_timeout_errors (0.3.5)
     nio4r (2.3.1)
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
+    oga (2.15)
+      ast
+      ruby-ll (~> 2.1)
     orm_adapter (0.5.0)
     parallel (1.13.0)
     parser (2.6.0.0)
@@ -330,6 +353,9 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.4.0)
+    ruby-ll (2.1.2)
+      ansi
+      ast
     ruby-progressbar (1.10.0)
     ruby-readability (0.7.0)
       guess_html_encoding (>= 0.0.4)
@@ -375,11 +401,17 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    typhoeus (1.3.1)
+      ethon (>= 0.9.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.19)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.4.1)
+    video_info (2.7)
+      iso8601 (~> 0.9.1)
+      net_http_timeout_errors (~> 0.3.0)
+      oga (~> 2.7)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.7.0)
@@ -420,6 +452,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3, >= 4.3.3)
   kaminari
+  link_thumbnailer
   listen (>= 3.0.5, < 3.2)
   lograge
   meta_request

@@ -1,13 +1,18 @@
-
 #crawl-img {
-  width: 210px;
-  height: 200px;
+  width: 350px;
+  height: 230px;
 }
 
-@media (max-width: 960px) {
+#crawl-img:hover {
+  opacity: 0.7;
+  transition: opacity .3s;
+}
 
-  #crawl-img {
-    width: auto !important;
-    height: auto !important;
-  }
+.title a {
+  text-decoration: none;
+  color: #000000 !important;
+}
+
+.title a:hover {
+  color: #20b2aa !important;
 }

@@ -60,6 +60,7 @@ class PostsController < ApplicationController
       @title_pages = doc.search("#hnmain .athing //td[@class='title']:last-child").map { |link| link.text }
       arr_creator = doc.search("#hnmain .subtext a:first-of-type").map { |link| link.text }
       @creator_name = arr_creator.values_at(* arr_creator.each_index.select { |i| i.even? })
+      @creator_name.map! { |name| name.present? ? name : "Author_Admin" }
       url_pages = doc.search("#hnmain .athing //td[@class='title']:last-child //a[@href]").map { |link| link["href"] }
       link_pages = url_pages.select! { |i| i[/^https?:\/\/[\S]+/] }
       @arr_news = []
@@ -67,13 +68,16 @@ class PostsController < ApplicationController
         if link.present?
           hacker_news = {}
           begin
-            obj = LinkThumbnailer.generate(link, attributes: [:images, :title, :description], image_limit: 1, image_stats: false)
-            hacker_news[:title] = obj.title
+            obj = LinkThumbnailer.generate(link, attributes: [:images, :description], image_limit: 1, image_stats: false)
             hacker_news[:description] = obj.description
-            hacker_news[:image] = obj.images.first.src.to_s
+            if url_exist?(obj.images.first.src.to_s) == false
+              obj.images.shift
+              hacker_news[:image] = Post::DEFAULT_IMAGE if obj.images.size == 1
+            else
+              hacker_news[:image] = obj.images.first.src.to_s
+            end
             @arr_news << hacker_news
           rescue => e
-            hacker_news[:title] = "Not find page"
             hacker_news[:image] = Post::DEFAULT_IMAGE
             @arr_news << hacker_news
           end
@@ -103,6 +107,17 @@ class PostsController < ApplicationController
     else
       redirect_to web_crawler_url
     end
+  end
+
+  def url_exist?(url_string)
+    url = URI.parse(url_string)
+    req = Net::HTTP.new(url.host, url.port)
+    req.use_ssl = (url.scheme == 'https')
+    path = url.path if url.path.present?
+    res = req.request_head(path || '/')
+    res.code != "404"
+  rescue Errno::ENOENT
+    false
   end
 
   def post_owner

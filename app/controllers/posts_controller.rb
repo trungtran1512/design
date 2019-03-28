@@ -62,9 +62,9 @@ class PostsController < ApplicationController
       @creator_name = arr_creator.values_at(* arr_creator.each_index.select { |i| i.even? })
       @creator_name.map! { |name| name.present? ? name : "Author_Admin" }
       url_pages = doc.search("#hnmain .athing //td[@class='title']:last-child //a[@href]").map { |link| link["href"] }
-      link_pages = url_pages.select! { |i| i[/^https?:\/\/[\S]+/] }
+      @link_pages = url_pages.select! { |i| i[/^https?:\/\/[\S]+/] }
       @arr_news = []
-      link_pages.each do |link|
+      @link_pages.each do |link|
         if link.present?
           hacker_news = {}
           begin
@@ -86,26 +86,6 @@ class PostsController < ApplicationController
       @arr_news
     else
       redirect_to users_path
-    end
-  end
-
-  def detail_site
-    if params[:url].present?
-      site = Nokogiri::HTML(open("#{Post::URL_DATA}/#{params[:url]}"))
-      header = site.search(".the-article-header h1").text
-      meta = site.search(".the-article-meta li").text.first(16)
-      title = site.search(".the-article-summary").text
-      body = site.search(".the-article-body").text
-      img = site.search(".picture img").attr('src').value if site.search(".picture img").present?
-      @result = {
-        'header': header,
-        'meta': meta,
-        'title': title,
-        'body': body,
-        'img': img
-      }
-    else
-      redirect_to web_crawler_url
     end
   end
 

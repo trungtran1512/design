@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
   resources :posts
 
-  get '/web_crawler', to: 'posts#crawl_data', as: 'web_crawler'
+  get '/news', to: 'posts#crawl_data', as: 'news'
+  get '/detail', to: 'posts#detail_page', as: 'detail'
 
   resources :colors
 end

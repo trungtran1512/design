@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index, :crawl_data, :detail_page]
 	before_action :find_post, only: [:edit, :update, :show, :delete]
   before_action :post_owner, only: [:edit, :update, :destroy]
 
@@ -54,38 +54,41 @@ class PostsController < ApplicationController
   end
 
   def crawl_data
-    if current_user.admin?
-      url = Post::URL_DATA
-      doc = Nokogiri::HTML(open(url).read, nil, 'utf-8')
-      @title_pages = doc.search("#hnmain .athing //td[@class='title']:last-child").map { |link| link.text }
-      arr_creator = doc.search("#hnmain .subtext a:first-of-type").map { |link| link.text }
-      @creator_name = arr_creator.values_at(* arr_creator.each_index.select { |i| i.even? })
-      @creator_name.map! { |name| name.present? ? name : "Author_Admin" }
-      url_pages = doc.search("#hnmain .athing //td[@class='title']:last-child //a[@href]").map { |link| link["href"] }
-      @link_pages = url_pages.select! { |i| i[/^https?:\/\/[\S]+/] }
-      @arr_news = []
-      @link_pages.each do |link|
-        if link.present?
-          hacker_news = {}
-          begin
-            obj = LinkThumbnailer.generate(link, attributes: [:images, :description], image_limit: 1, image_stats: false)
-            hacker_news[:description] = obj.description
-            if url_exist?(obj.images.first.src.to_s) == false
-              obj.images.shift
-              hacker_news[:image] = Post::DEFAULT_IMAGE if obj.images.size == 1
-            else
-              hacker_news[:image] = obj.images.first.src.to_s
-            end
-            @arr_news << hacker_news
-          rescue => e
-            hacker_news[:image] = Post::DEFAULT_IMAGE
-            @arr_news << hacker_news
+    url = Post::URL_DATA
+    doc = Nokogiri::HTML(open(url).read, nil, 'utf-8')
+    @title_pages = doc.search("#hnmain .athing //td[@class='title']:last-child").map { |link| link.text }
+    arr_creator = doc.search("#hnmain .subtext a:first-of-type").map { |link| link.text }
+    @creator_name = arr_creator.values_at(* arr_creator.each_index.select { |i| i.even? })
+    @creator_name.map! { |name| !name.blank? ? name : "Author_Admin" }
+    url_pages = doc.search("#hnmain .athing //td[@class='title']:last-child //a[@href]").map { |link| link["href"] }
+    @link_pages = url_pages.select! { |i| i[/^https?:\/\/[\S]+/] }
+    @arr_news = []
+    @link_pages.each do |link|
+      unless link.blank?
+        hacker_news = {}
+        begin
+          obj = LinkThumbnailer.generate(link, attributes: [:images, :description], image_limit: 1, image_stats: false)
+          hacker_news[:description] = obj.description
+          if url_exist?(obj.images.first.src.to_s) == false
+            obj.images.shift
+            hacker_news[:image] = Post::DEFAULT_IMAGE if obj.images.size == 1
+          else
+            hacker_news[:image] = obj.images.first.src.to_s
           end
+          @arr_news << hacker_news
+        rescue => e
+          hacker_news[:image] = Post::DEFAULT_IMAGE
+          @arr_news << hacker_news
         end
       end
-      @arr_news
-    else
-      redirect_to users_path
+    end
+    @arr_news
+  end
+
+  def detail_page
+    unless params[:url].blank?
+      doc = Nokogiri::HTML(open(params[:url]).read, nil, 'utf-8')
+      @content = doc.search("//article").to_html
     end
   end
 

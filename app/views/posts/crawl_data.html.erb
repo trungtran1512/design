@@ -19,31 +19,33 @@ h3, h5 {
       <div class="w3-row-padding w3-padding-32 w3-center">
         <div class="container">
           <% @title_pages.zip(@arr_news, @creator_name, @link_pages).each do |tit_page, arr_new, creat_name, url| %>
-            <% if arr_new != nil %>
-              <div class="w3-third">
-                <div class="card" style="height: 660px; margin-bottom: 10px;">
-                  <article class="new">
-                    <%= link_to image_tag(arr_new[:image], id: "crawl-img", class: "card-img-top", src: "...", alt: "Card image cap"), url, target: :_blank %>
-                    <div class="card-body">
-                      <div class="card-title" style="height: 130px;">
-                        <h3 class="title"><%= link_to "#{tit_page}", url, target: :_blank %></h3>
+            <% cache [tit_page, arr_new, creat_name, url] do %>
+              <% if arr_new != nil %>
+                <div class="w3-third">
+                  <div class="card" style="height: 660px; margin-bottom: 10px;">
+                    <article class="new">
+                      <%= link_to image_tag(arr_new[:image], id: "crawl-img", class: "card-img-top", src: "...", alt: "Card image cap"), detail_path({ url: url }), target: :_blank %>
+                      <div class="card-body">
+                        <div class="card-title" style="height: 130px;">
+                          <h3 class="title"><%= link_to "#{tit_page}",detail_path({ url: url }), target: :_blank %></h3>
+                        </div>
+                        <div class="card-text" style="text-align: justify; height: 200px;">
+                          <h5 class="description"><%= truncate(arr_new[:description], length: 150, omission: '... (continued)') %></h5>
+                        </div>
+                        <div class="card-footer text-muted">
+                          <p class="detail" style="font-style: italic; text-align: center;">Create By: <%= creat_name %></p>
+                        </div>
                       </div>
-                      <div class="card-text" style="text-align: justify; height: 200px;">
-                        <h5 class="description"><%= truncate(arr_new[:description], length: 150, omission: '... (continued)') %></h5>
-                      </div>
-                      <div class="card-footer text-muted">
-                        <p class="detail" style="font-style: italic; text-align: center;">Create By: <%= creat_name %></p>
-                      </div>
-                    </div>
-                  </article>
+                    </article>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>
       </div>
       <div style="text-align: center;">
-        <%= link_to "Refresh", web_crawler_url, class: "btn btn-raised btn-danger" %>
+        <%= link_to "Refresh", news_path, class: "btn btn-raised btn-danger" %>
         <%= link_to "Back", users_path, class: "btn btn-raised btn-info" %>
       </div>
     </div>
